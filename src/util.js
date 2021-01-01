@@ -1,18 +1,20 @@
 const KEY_LEFT = 37,
-      KEY_RIGHT = 39
+  KEY_RIGHT = 39
+
+const DAY_MILLIS = 1000 * 60 * 60 * 24
 
 export function caseDataArrToDict(arr) {
   const dict = {}
-  console.log(arr)
-  for(let entry of arr) {
+  // console.log(arr)
+  for (let entry of arr) {
     const date = entry.date
     dict[date] = entry.data
   }
   return dict
 }
 
-function formatDate(date) {
-  var d = new Date(date),
+export function formatDate(date) {
+  let d = new Date(date),
     month = '' + (d.getMonth() + 1),
     day = '' + d.getDate(),
     year = d.getFullYear();
@@ -25,17 +27,110 @@ function formatDate(date) {
   return [year, month, day].join('-');
 }
 
-export function handleKeyPress(e, date, setDate, caseData, setCases) {
-  
+export function formatReadableDate(date) {
+
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  const days = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st']
+
+  const d = new Date(date),
+    month = months[d.getMonth()],
+    day = days[d.getDate() - 1],
+    year = d.getFullYear();
+
+  return `${month} ${day}, ${year}`
+}
+
+export function handleKeyPress(e, date, updateDate, sliderData) {
+
   if (![KEY_LEFT, KEY_RIGHT].includes(e.keyCode)) return
 
   let currentDate = new Date(date)
-  
+
   if (e.keyCode === KEY_LEFT) {
-    currentDate.setDate(currentDate.getDate() - 1)
+    if (currentDate > sliderData.startDate) currentDate.setDate(currentDate.getDate() - 1)
   } else if (e.keyCode === KEY_RIGHT) {
-    currentDate.setDate(currentDate.getDate() + 1)
+    if (currentDate < sliderData.endDate - DAY_MILLIS) currentDate.setDate(currentDate.getDate() + 1)
   }
-  setDate(formatDate(currentDate))
-  setCases(caseData[formatDate(currentDate)])
+  updateDate(currentDate)
+}
+
+export function handleMouseMove(e, mousePos, setMousePos, setStrokeLondon, popup, selectedArea) {
+  setMousePos({ x: e.clientX, y: e.clientY })
+  const mapContainer = document.querySelector(".map-container")
+  const rect = mapContainer.getBoundingClientRect()
+  if (mousePos.x > rect.left && mousePos.x < rect.right && mousePos.y > rect.top && mousePos.y < rect.bottom && selectedArea === null) {
+    if (!popup) setStrokeLondon(true)
+  } else {
+    setStrokeLondon(false)
+  }
+}
+
+export function calculateBgImgData() {
+  const mapContainer = document.querySelector(".map-container")
+  if (!mapContainer) return
+  const rect = mapContainer.getBoundingClientRect()
+  return {
+    xs: rect.width * 2.397,
+    ys: rect.width * 1.339,
+    xp: rect.x - (rect.width * 0.685),
+    yp: rect.y - (rect.width * 0.32025)
+  }
+}
+
+export function chartSettings(labels, data, areaName, title) {
+  return {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Cases',
+        backgroundColor: 'rgba(210, 30, 60, 0.5)',
+        borderColor: 'rgb(210, 30, 60)',
+        pointRadius: 0,
+        pointHitRadius: 5,
+        pointHoverRadius: 0,
+        data: data
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }],
+        xAxes: [{
+          type: 'time',
+          ticks: {
+            autoSkip: true,
+            maxTicksLimit: 10,
+            maxRotation: 0,
+            minRotation: 0
+          }
+        }]
+      },
+      legend: {
+        display: false
+      },
+      layout: {
+        padding: {
+          left: 30,
+          right: 30,
+          top: 10,
+          bottom: 10
+        }
+      },
+      title: {
+        display: true,
+        text: title,
+        fontSize: 16,
+        padding: 10
+      },
+      animation: {
+        duration: 0
+      }
+    }
+  }
 }
