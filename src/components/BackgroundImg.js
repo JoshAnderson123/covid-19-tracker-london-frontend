@@ -1,8 +1,8 @@
 import React from 'react'
-import backgroundImage from './media/London_satellite_photo3.jpg'
+import backgroundImage from '../media/London_satellite_photo3.jpg'
 
 export default function BackgroundImg({ bgImgData }) {
-  
+
   return (
     <div className="fill-parent">
       <img

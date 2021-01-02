@@ -1,0 +1,100 @@
+@import "variables";
+
+$slider-height: 5px;
+$slider-container-height: 50px;
+$slider-thumb-size: 19px;
+$slider-color: #bbb;
+$slider-thumb-color: #555;
+$slider-fork-width: 2px;
+$slider-fork-label-color: #555;
+
+.date-slider-container {
+  height: 100px;
+  cursor: pointer;
+  user-select: none;
+  // background-color: rgb(137, 255, 137);
+}
+
+.date-label {
+  font: 600 1.5rem "Segoe UI";
+  margin-bottom: 15px;
+  color: $title-text-color;
+}
+
+.date-slider {
+  width: 100%;
+  height: $slider-height;
+  background-color: $slider-color;
+  position: relative;
+  // border-radius: 100px;
+}
+
+.date-slider .slide-thumb {
+  position: absolute;
+  top: -($slider-thumb-size - $slider-height)/2 - 1px;
+  left: 30px;
+  height: $slider-thumb-size;
+  width: $slider-thumb-size;
+  background-color: $slider-thumb-color;
+  border-radius: 100px;
+}
+
+.date-slider-forks {
+  width: 100%;
+  height: 10px;
+  border-left: $slider-fork-width solid $slider-color;
+  border-right: $slider-fork-width solid $slider-color;
+}
+
+.date-slider-label-wrapper {
+  width: 100%;
+}
+
+.slider-fork-label {
+  color: $slider-fork-label-color;
+  font: 400 0.8rem "Segoe UI";
+}
+
+.map-stats {
+  height: 70px;
+  width: 80%;
+  margin-bottom: 30px;
+  color: $title-text-color;
+}
+
+.case-tooltip-container {
+  position: absolute;
+  width: auto;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgb(88, 88, 88);
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  user-select: none;
+
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.case-tooltip-container > .title {
+  position: relative;
+  width: 100%;
+  /* background-color: seagreen; */
+  overflow: hidden;
+  white-space: nowrap;
+  font: 400 1.5rem "Segoe UI";
+}
+
+.case-tooltip-container > .case-label {
+  position: relative;
+  width: 100%;
+  /* background-color: red; */
+  margin-top: 3px;
+  overflow: hidden;
+  font: 400 1.25rem "Segoe UI";
+}

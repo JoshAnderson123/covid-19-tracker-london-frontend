@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Chart from 'chart.js'
-import { chartSettings } from './util'
+import { chartSettings } from '../../util'
 import { pure } from 'recompose';
 
-function CasesChart({ caseDataArr, selectedArea, strokeLondon, setPopup }) {
-
-  const [closing, setClosing] = useState(false)
-  
-  console.log("tits")
+function Charts({ caseDataArr, selectedArea, strokeLondon }) {
 
   useEffect(() => {
-
-    console.log("SelectedArea: ", selectedArea, ", StrokeLondon: ", strokeLondon)
+    if (!caseDataArr || !selectedArea) return
     const areaName = strokeLondon ? "London" : selectedArea.replace(" 2", "")
     const sortedData = caseDataArr.sort((a, b) => a.date < b.date ? -1 : 1)
 
@@ -33,28 +28,19 @@ function CasesChart({ caseDataArr, selectedArea, strokeLondon, setPopup }) {
     new Chart(ctxCases, chartSettings(londonCaseData.labels, londonCaseData.caseData, areaName, "Daily Cases"));
     const ctxDeaths = document.getElementById('deaths-chart').getContext('2d');
     new Chart(ctxDeaths, chartSettings(londonCaseData.labels, londonCaseData.deathData, areaName, "Daily Deaths"));
-  }, [])
-
-  function closePopup() {
-    setClosing(true)
-    setTimeout(() => {
-      setPopup(false)
-    }, 200)
-  }
+    // eslint-disable-next-line
+  }, [caseDataArr, selectedArea])
 
   return (
-    <div className={`popup-container fill-parent flex-center ${closing ? "popup-closing" : "popup-opening"}`} onClick={() => closePopup()}>
-      <div className="charts-container flex-center">
-        <div className="popup-title">{(strokeLondon || !selectedArea) ? "London" : selectedArea.replace(" 2", "")}</div>
-        <div className="chart-container">
-          <canvas id="cases-chart"></canvas>
-        </div>
-        <div className="chart-container">
-          <canvas id="deaths-chart"></canvas>
-        </div>
+    <div className="charts-container">
+      <div className="chart-container">
+        <canvas id="cases-chart"></canvas>
+      </div>
+      <div className="chart-container">
+        <canvas id="deaths-chart"></canvas>
       </div>
     </div>
   )
 }
 
-export default pure(CasesChart)
+export default pure(Charts)

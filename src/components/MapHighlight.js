@@ -1,5 +1,5 @@
 import React from 'react'
-import { pathData } from './config'
+import { pathData } from '../config'
 
 export default function MapHighlight({ area }) {
 

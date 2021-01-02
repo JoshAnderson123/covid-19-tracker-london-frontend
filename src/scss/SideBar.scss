@@ -1,0 +1,28 @@
+@import "variables";
+
+$logo-size: 50%;
+
+.sidebar-container {
+  width: 300px;
+  height: 100vh;
+  background-color: #fff;
+  flex-grow: 0;
+}
+
+.virus-icon {
+  position: relative;
+  width: $logo-size;
+  padding-top: $logo-size;
+  margin-top: 50px;
+}
+
+.virus-icon img {
+  position: absolute; 
+  object-fit: contain;
+  opacity: 0.6;
+}
+
+.sidebar-text {
+  width: 80%;
+  color: $title-text-color;
+}

@@ -1,6 +1,7 @@
-import React, {useEffect, useRef} from 'react'
+import React, { useEffect, useRef } from 'react'
+import '../../css/MapCard.css'
 import { pure } from 'recompose';
-import {formatDate} from './util'
+import { formatDate, formatReadableDate } from '../../util'
 
 function DateSlider({ sliderData, date, updateDate, mousePress }) {
 
@@ -24,11 +25,11 @@ function DateSlider({ sliderData, date, updateDate, mousePress }) {
     }
   }
 
-  function slideTest(e) {
+  function updateDateWithSlider(e) {
     if (!mousePress) return
     const rect = slider.current.getBoundingClientRect()
     let selectedDateID = Math.round(((e.clientX - rect.left) / (slider.current.offsetWidth)) * sliderData.dateSpan)
-    if (selectedDateID > sliderData.dateSpan - 1) selectedDateID = sliderData.dateSpan - 1
+    if (selectedDateID > sliderData.dateSpan) selectedDateID = sliderData.dateSpan
     if (selectedDateID < 0) selectedDateID = 0
     const selectedDate = new Date(sliderData.startDate)
     selectedDate.setDate(selectedDate.getDate() + selectedDateID)
@@ -36,10 +37,21 @@ function DateSlider({ sliderData, date, updateDate, mousePress }) {
   }
 
   return (
-    <div className="date-slider-container flex-center" onMouseMove={e => slideTest(e)}>
+    <div className="date-slider-container flex-center w-100" onMouseMove={e => updateDateWithSlider(e)}>
+
+      <div className="date-label ">{formatReadableDate(date)}</div>
+
       <div className="date-slider">
         <div className="slide-thumb" style={{ left: calculateDateThumbOffset() }}></div>
       </div>
+
+      <div className="date-slider-forks"></div>
+
+      <div className="date-slider-label-wrapper flex-sb">
+        <div className="slider-fork-label">{formatReadableDate(sliderData.startDate)}</div>
+        <div className="slider-fork-label">{formatReadableDate(sliderData.endDate)}</div>
+      </div>
+
     </div>
   )
 }

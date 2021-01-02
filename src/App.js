@@ -2,12 +2,11 @@ import './css/App.css';
 import axios from "axios";
 import { useState, useEffect } from 'react'
 import { caseDataArrToDict, handleKeyPress, handleMouseMove, formatDate, formatReadableDate, calculateBgImgData } from './util'
-import LondonMap from './LondonMap'
-import CasesTooltip from './CasesTooltip';
-import DateSlider from './DateSlider';
-import CasesChart from './CasesChart';
-import BackgroundImg from './BackgroundImg';
-
+import LondonMap from './components/LondonMap'
+// import CasesTooltip from './components/CasesTooltip';
+import DateSlider from './components/DateSlider';
+import CasesChart from './components/CasesChart';
+import BackgroundImg from './components/BackgroundImg';
 
 let caseData, caseDataArr
 
@@ -58,10 +57,10 @@ function App() {
         onMouseUp={e => setMousePress(false)}
       >
         <BackgroundImg bgImgData={bgImgData} />
-        {/* <div className="date-label">{`${formatReadableDate(date)}`}</div> */}
-        {/* <DateSlider sliderData={sliderData} date={date} updateDate={updateDate} mousePress={mousePress} /> */}
+        <div className="date-label">{`${formatReadableDate(date)}`}</div>
+        <DateSlider sliderData={sliderData} date={date} updateDate={updateDate} mousePress={mousePress} />
         <LondonMap cases={cases} selectedArea={selectedArea} setSelectedArea={setSelectedArea} strokeLondon={strokeLondon} popup={popup} setPopup={setPopup} />
-        {((selectedArea || strokeLondon) && !popup) ? <CasesTooltip mousePos={mousePos} cases={cases} selectedArea={selectedArea} /> : null}
+        {/* {((selectedArea || strokeLondon) && !popup) ? <CasesTooltip mousePos={mousePos} cases={cases} selectedArea={selectedArea} /> : null} */}
         {popup ? <CasesChart caseDataArr={caseDataArr} selectedArea={selectedArea} strokeLondon={strokeLondon} setPopup={setPopup} /> : null}
       </div>
     </>

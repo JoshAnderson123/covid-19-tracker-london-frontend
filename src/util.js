@@ -1,3 +1,5 @@
+import { boroughPopulations } from './config'
+
 const KEY_LEFT = 37,
   KEY_RIGHT = 39
 
@@ -30,6 +32,19 @@ export function formatDate(date) {
 export function formatReadableDate(date) {
 
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  const days = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st']
+
+  const d = new Date(date),
+    month = months[d.getMonth()],
+    day = days[d.getDate() - 1],
+    year = d.getFullYear();
+
+  return `${month} ${day}, ${year}`
+}
+
+export function formatReadableDateShort(date) {
+
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   const days = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st']
 
   const d = new Date(date),
@@ -133,4 +148,41 @@ export function chartSettings(labels, data, areaName, title) {
       }
     }
   }
+}
+
+export function getBoroughSummaryData(areaName, caseDataArr) {
+
+  if (!caseDataArr || !areaName) return {population: "NaN", totalCases: "NaN", totalDeaths: "NaN"}
+  let population, totalCases, totalDeaths
+
+  if (areaName === "London") {
+    population = Object.values(boroughPopulations).reduce((acc, val) => acc + val, 0)
+    totalCases = caseDataArr.reduce((acc, date) => acc + date.data.reduce((acc2, area) => acc2 + area.cases, 0), 0)
+    totalDeaths = caseDataArr.reduce((acc, date) => acc + date.data.reduce((acc2, area) => acc2 + area.deaths, 0), 0)
+  } else {
+    population = boroughPopulations[areaName]
+    totalCases = caseDataArr.reduce((acc, date) => acc + date.data.filter(area => area.name === areaName)[0].cases, 0)
+    totalDeaths = caseDataArr.reduce((acc, date) => acc + date.data.filter(area => area.name === areaName)[0].deaths, 0)
+  }
+
+  return {population, totalCases, totalDeaths}
+}
+
+export function getBoroughLatestData(areaName, caseData, sliderData) {
+  const date = sliderData.endDate
+  const tier = 4 // Create tier dataset
+  let cases, deaths
+
+  if (areaName === "London") {
+
+  } else {
+    cases = caseData[sliderData.endDate][areaName].cases
+    deaths = caseData[sliderData.endDate][areaName].deaths
+  }
+  return {date, cases, deaths, tier}
+}
+
+export function numberWithCommas(x) {
+  if (x === null) return null
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

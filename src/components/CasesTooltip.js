@@ -1,5 +1,5 @@
 import React from 'react'
-import { caseTooltipOffset as offset } from './config'
+import { caseTooltipOffset as offset } from '../config'
 
 export default function CasesTooltip({ mousePos, cases, selectedArea }) {
 

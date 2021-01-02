@@ -1,24 +1,24 @@
 import React from 'react'
-import chroma from 'chroma-js'
-import { pathData } from './config'
+// import chroma from 'chroma-js'
+import { pathData } from '../config'
 import MapHighlight from './MapHighlight'
 import { pure } from 'recompose';
 
 function LondonMap({ cases, selectedArea, setSelectedArea, strokeLondon, popup, setPopup }) {
 
-  function logCases(areaName) {
-    if (cases === []) return
-    const areaNameStr = areaName.replace(" 2", "") // Two boroughs have 2 svg paths, where the second path ends in " 2". This makes converts that path name into a legitimate area name
-    const casesInArea = cases.filter(area => area.name === areaNameStr)[0].cases
-    console.log(areaNameStr, casesInArea)
-  }
+  // function logCases(areaName) {
+  //   if (cases === []) return
+  //   const areaNameStr = areaName.replace(" 2", "") // Two boroughs have 2 svg paths, where the second path ends in " 2". This makes converts that path name into a legitimate area name
+  //   const casesInArea = cases.filter(area => area.name === areaNameStr)[0].cases
+  //   console.log(areaNameStr, casesInArea)
+  // }
 
   function fillArea(areaName) {
     if (cases === undefined) return "#0000ff"
     if (cases.length === 0) return "440044"
-    const casesInArea = cases.filter(area => area.name === areaName)[0].cases
-    const scale = chroma.scale(['#75ff75', '#ffa114', '#fc0505', '#ad001a']).domain([0, 100, 400, 800]);
-    return scale(casesInArea).hex()
+    // const casesInArea = cases.filter(area => area.name === areaName)[0].cases
+    // const scale = chroma.scale(['#75ff75', '#ffa114', '#fc0505', '#ad001a']).domain([0, 100, 400, 800]);
+    return "#ffffff"//scale(casesInArea).hex()
   }
 
   function renderPaths() {
