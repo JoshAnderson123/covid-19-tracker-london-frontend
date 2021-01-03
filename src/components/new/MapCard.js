@@ -12,7 +12,7 @@ export default function MapCard({ sliderData, date, updateDate, mousePress, case
       <DateSlider sliderData={sliderData} date={date} updateDate={updateDate} mousePress={mousePress} />
       <LondonMap cases={cases} selectedArea={selectedArea} setSelectedArea={setSelectedArea} />
       <MapStats caseData={caseData} date={date} selectedArea={selectedArea} />
-      {(selectedArea && selectedArea !== "London") ? <CasesTooltip mousePos={mousePos} cases={cases} selectedArea={selectedArea} /> : null}
+      {(selectedArea && selectedArea !== "London" && cases.length > 0) ? <CasesTooltip mousePos={mousePos} cases={cases} selectedArea={selectedArea} /> : null}
     </div>
   )
 }

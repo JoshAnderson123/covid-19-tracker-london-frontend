@@ -20,16 +20,13 @@ export default function App2() {
   let [mousePress, setMousePress] = useState(false)
 
   useEffect(() => {
-    console.log("test 1")
     axios.get(`${SERVER_URL}/getCaseData`).then(res => {
-      console.log("test 2")
       caseDataArr = res.data
       caseData = caseDataArrToDict(res.data)
       setCases(caseData[date])
       document.querySelector(".page-container").focus();
       return axios.get(`${SERVER_URL}/getConfigData`)
     }).then(res => {
-      console.log("test 3")
       const startDate = new Date(res.data[0].startDate)
       const endDate = new Date(res.data[0].endDate)
       const dateSpan = Math.round((endDate - startDate) / (24 * 60 * 60 * 1000))
