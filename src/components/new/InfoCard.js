@@ -3,7 +3,7 @@ import '../../css/Cards.css'
 import '../../css/InfoCard.css'
 import StatBlock from './StatBlock'
 import Charts from './Charts'
-import { getBoroughSummaryData, numberWithCommas, formatReadableDateShort, formatDate } from '../../util'
+import { getBoroughSummaryData, numberWithCommas, formatReadableDateShort, formatDate, trimArea } from '../../util'
 
 export default function InfoCard({ caseDataArr, selectedArea, sliderData, caseData }) {
 
@@ -15,16 +15,18 @@ export default function InfoCard({ caseDataArr, selectedArea, sliderData, caseDa
       if (selectedArea === "London") {
         latestCases = data.reduce((acc, area) => acc + area.cases, 0)
         latestDeaths = data.reduce((acc, area) => acc + area.deaths, 0)
+        latestDeaths = latestDeaths === null ? 0 : latestDeaths
       } else {
-        latestCases = data.filter(area => area.name === selectedArea)[0].cases
-        latestDeaths = data.filter(area => area.name === selectedArea)[0].deaths
+        latestCases = data.filter(area => area.name === trimArea(selectedArea))[0].cases
+        latestDeaths = data.filter(area => area.name === trimArea(selectedArea))[0].deaths
+        latestDeaths = latestDeaths === null ? 0 : latestDeaths
       }
     }
   }
 
   return (
     <div className="card-container flex-v-start">
-      <div className="card-title">{selectedArea}</div>
+      <div className="card-title">{`${trimArea(selectedArea)}`}</div>
       <div className="separator-line"></div>
       <div className="info-stats-container" style={{ marginBottom: "20px" }}>
         <StatBlock hAlign={"ta-left"} vDirection={"bottom"} stat1={"Population"} stat2={numberWithCommas(summaryData.population)} />
@@ -40,6 +42,7 @@ export default function InfoCard({ caseDataArr, selectedArea, sliderData, caseDa
         <StatBlock hAlign={"ta-left"} vDirection={"bottom"} stat1={"Tier"} stat2={"4"} />
       </div>
       <div className="card-title-small">Timeline</div>
+      <div className="separator-line"></div>
       <Charts caseDataArr={caseDataArr} selectedArea={selectedArea} strokeLondon={false} />
     </div>
   )

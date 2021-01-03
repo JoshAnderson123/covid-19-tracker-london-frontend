@@ -7,12 +7,15 @@
 }
 
 .content-container {
-  background-color: #ccc;
+  // background-color: #ccc;
+  background: linear-gradient(90deg, #ccc, #aaa);
   flex-grow: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 50px;
-  padding: 50px;
+  grid-gap: 30px;
+  padding: 60px;
+  overflow: hidden;
+  height: 100%;
 }
 
 .content-container:focus {
@@ -69,6 +72,10 @@
 
 .font-medium {
   font: 400 1.5rem "Segoe UI";
+}
+
+.font-medium-small {
+  font: 400 1rem "Segoe UI";
 }
 
 .font-small {

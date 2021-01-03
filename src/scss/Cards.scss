@@ -1,13 +1,14 @@
 @import "variables";
 
-$separator-line-color: #ddd;
+$separator-line-color: #bbb;
 
 .card-container {
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0px 15px 30px rgba(206, 150, 150, 0.4);
-  padding: 30px;
-  
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+  padding: 20px 30px 30px 30px;
+  max-height: 100%;
+  position: relative;
 }
 
 .card-title {
@@ -17,7 +18,7 @@ $separator-line-color: #ddd;
 }
 
 .card-title-small {
-  font: 700 1.7rem "Segoe UI";
+  font: 700 1.5rem "Segoe UI";
   width: 100%;
   color: $title-text-color;
 }
@@ -26,7 +27,7 @@ $separator-line-color: #ddd;
   width: 100%;
   border-bottom: 1px solid $separator-line-color;
   margin-top: 4px;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
 }
 
 .stat-big {

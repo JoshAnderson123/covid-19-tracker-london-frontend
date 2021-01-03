@@ -2,6 +2,7 @@ import React from 'react'
 import '../../css/LondonMap.css'
 import chroma from 'chroma-js'
 import { pathData } from '../../config'
+import { casesPerHundredThousand } from '../../util'
 import MapHighlight from './MapHighlight'
 import { pure } from 'recompose';
 
@@ -11,8 +12,8 @@ function LondonMap({ cases, selectedArea, setSelectedArea, strokeLondon }) {
     if (cases === undefined) return "#0000ff"
     if (cases.length === 0) return "440044"
     const casesInArea = cases.filter(area => area.name === areaName)[0].cases
-    const scale = chroma.scale(['#75ff75', '#ffa114', '#fc0505', '#ad001a']).domain([0, 100, 400, 800]);
-    return scale(casesInArea).hex()
+    const scale = chroma.scale(['#75ff75', '#ffa114', '#fc0505', '#ad001a']).domain([0, 50, 170, 400]);
+    return scale(casesPerHundredThousand(casesInArea, areaName)).hex()
   }
 
   function renderPaths() {
@@ -23,9 +24,9 @@ function LondonMap({ cases, selectedArea, setSelectedArea, strokeLondon }) {
         <path
           key={key}
           fill={fillArea(fillStr)}
-          onClick={() => { console.log(fillStr); setSelectedArea(fillStr)}}
-          onMouseEnter={() => setSelectedArea(fillStr)}
-          onMouseLeave={() => {setSelectedArea("London")}}
+          onClick={() => setSelectedArea(fillStr)}
+          onMouseEnter={() => setSelectedArea(key)}
+          onMouseLeave={() => setSelectedArea("London")}
           d={value}
         />
       )

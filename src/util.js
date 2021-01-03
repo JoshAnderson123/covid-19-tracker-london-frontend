@@ -64,7 +64,7 @@ export function handleKeyPress(e, date, updateDate, sliderData) {
   if (e.keyCode === KEY_LEFT) {
     if (currentDate > sliderData.startDate) currentDate.setDate(currentDate.getDate() - 1)
   } else if (e.keyCode === KEY_RIGHT) {
-    if (currentDate < sliderData.endDate - DAY_MILLIS) currentDate.setDate(currentDate.getDate() + 1)
+    if (currentDate < sliderData.endDate) currentDate.setDate(currentDate.getDate() + 1)
   }
   updateDate(currentDate)
 }
@@ -99,8 +99,8 @@ export function chartSettings(labels, data, areaName, title) {
       labels: labels,
       datasets: [{
         label: 'Cases',
-        backgroundColor: 'rgba(210, 30, 60, 0.5)',
-        borderColor: 'rgb(210, 30, 60)',
+        backgroundColor: 'rgba(252, 5, 5, 0.35)',
+        borderColor: 'rgba(252, 5, 5, 0.8)', // 210, 30, 60
         pointRadius: 0,
         pointHitRadius: 5,
         pointHoverRadius: 0,
@@ -145,12 +145,17 @@ export function chartSettings(labels, data, areaName, title) {
       },
       animation: {
         duration: 0
-      }
+      },
+      chartArea: {
+        backgroundColor: 'rgb(255, 255,255)'
+    }
     }
   }
 }
 
-export function getBoroughSummaryData(areaName, caseDataArr) {
+export function getBoroughSummaryData(areaNameUntrim, caseDataArr) {
+
+  const areaName = trimArea(areaNameUntrim)
 
   if (!caseDataArr || !areaName) return {population: "NaN", totalCases: "NaN", totalDeaths: "NaN"}
   let population, totalCases, totalDeaths
@@ -168,7 +173,8 @@ export function getBoroughSummaryData(areaName, caseDataArr) {
   return {population, totalCases, totalDeaths}
 }
 
-export function getBoroughLatestData(areaName, caseData, sliderData) {
+export function getBoroughLatestData(areaNameUntrim, caseData, sliderData) {
+  const areaName = trimArea(areaNameUntrim)
   const date = sliderData.endDate
   const tier = 4 // Create tier dataset
   let cases, deaths
@@ -185,4 +191,13 @@ export function getBoroughLatestData(areaName, caseData, sliderData) {
 export function numberWithCommas(x) {
   if (x === null) return null
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+export function trimArea(selectedArea) {
+  return selectedArea.replace(" 2", "")
+}
+
+export function casesPerHundredThousand(casesInArea, areaName) {
+  const decimalPlaces = 0
+  return Math.round((casesInArea * (10**decimalPlaces)) / (boroughPopulations[trimArea(areaName)] / 100000)) / (10**decimalPlaces)
 }

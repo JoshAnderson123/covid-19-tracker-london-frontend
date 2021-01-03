@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './css/App2.css'
 import axios from 'axios'
 import { caseDataArrToDict, handleKeyPress, handleMouseMove, formatDate } from './util'
+import {SERVER_URL} from './config'
 import SideBar from './components/new/SideBar'
 import MapCard from './components/new/MapCard'
 import InfoCard from './components/new/InfoCard'
@@ -19,12 +20,12 @@ export default function App2() {
   let [mousePress, setMousePress] = useState(false)
 
   useEffect(() => {
-    axios.get("http://localhost:8080/getCaseData").then(res => {
+    axios.get(`${SERVER_URL}/getCaseData`).then(res => {
       caseDataArr = res.data
       caseData = caseDataArrToDict(res.data)
       setCases(caseData[date])
       document.querySelector(".page-container").focus();
-      return axios.get("http://localhost:8080/getConfigData")
+      return axios.get(`${SERVER_URL}/getConfigData`)
     }).then(res => {
       const startDate = new Date(res.data[0].startDate)
       const endDate = new Date(res.data[0].endDate)

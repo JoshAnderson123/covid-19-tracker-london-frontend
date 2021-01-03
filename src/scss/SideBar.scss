@@ -3,7 +3,7 @@
 $logo-size: 50%;
 
 .sidebar-container {
-  width: 300px;
+  width: 280px;
   height: 100vh;
   background-color: #fff;
   flex-grow: 0;
@@ -13,7 +13,7 @@ $logo-size: 50%;
   position: relative;
   width: $logo-size;
   padding-top: $logo-size;
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 .virus-icon img {
@@ -23,6 +23,10 @@ $logo-size: 50%;
 }
 
 .sidebar-text {
-  width: 80%;
+  width: 70%;
   color: $title-text-color;
+}
+
+.sidebar-title {
+  font: 700 2.3rem "Segoe UI";
 }
