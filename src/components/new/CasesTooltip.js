@@ -4,11 +4,11 @@ import { trimArea, casesPerHundredThousand } from '../../util'
 
 export default function CasesTooltip({ mousePos, cases, selectedArea }) {
 
-  function sumCases() {
-    const casesSum = cases.reduce((acc, area) => acc + area.cases, 0)
-    const deathsSum = cases.reduce((acc, area) => acc + area.deaths, 0)
-    return { cases: casesSum, deaths: deathsSum }
-  }
+  // function sumCases() {
+  //   const casesSum = cases.reduce((acc, area) => acc + area.cases, 0)
+  //   const deathsSum = cases.reduce((acc, area) => acc + area.deaths, 0)
+  //   return { cases: casesSum, deaths: deathsSum }
+  // }
 
   const rect = document.querySelector("#map-card").getBoundingClientRect()
   const selectedAreaName = ([undefined, null].includes(selectedArea)) ? "London" : trimArea(selectedArea)

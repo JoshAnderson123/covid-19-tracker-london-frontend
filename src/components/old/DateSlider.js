@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react'
 import { pure } from 'recompose';
-import {formatDate} from '../util'
+import {formatDate} from '../../util'
 
 function DateSlider({ sliderData, date, updateDate, mousePress }) {
 

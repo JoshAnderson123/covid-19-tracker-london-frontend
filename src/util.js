@@ -3,7 +3,7 @@ import { boroughPopulations } from './config'
 const KEY_LEFT = 37,
   KEY_RIGHT = 39
 
-const DAY_MILLIS = 1000 * 60 * 60 * 24
+// const DAY_MILLIS = 1000 * 60 * 60 * 24
 
 export function caseDataArrToDict(arr) {
   const dict = {}

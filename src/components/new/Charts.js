@@ -23,6 +23,20 @@ function Charts({ caseDataArr, selectedArea, strokeLondon }) {
       deathsChart.width = deathsContainerRect.width - 0
       deathsChart.height = deathsContainerRect.height - 4
     }
+
+    Chart.pluginService.register({
+      beforeDraw: function (chart, easing) {
+        if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
+          var ctx = chart.chart.ctx;
+          var chartArea = chart.chartArea;
+
+          ctx.save();
+          ctx.fillStyle = chart.config.options.chartArea.backgroundColor;
+          ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+          ctx.restore();
+        }
+      }
+    });
   }, [])
 
   useEffect(() => {
@@ -53,19 +67,6 @@ function Charts({ caseDataArr, selectedArea, strokeLondon }) {
     const ctxDeaths = document.getElementById('deaths-chart').getContext('2d');
     deathChart.current = new Chart(ctxDeaths, chartSettings(londonCaseData.labels, londonCaseData.deathData, areaName, "Daily Deaths"));
 
-    Chart.pluginService.register({
-      beforeDraw: function (chart, easing) {
-        if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
-          var ctx = chart.chart.ctx;
-          var chartArea = chart.chartArea;
-
-          ctx.save();
-          ctx.fillStyle = chart.config.options.chartArea.backgroundColor;
-          ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
-          ctx.restore();
-        }
-      }
-    });
     // eslint-disable-next-line
   }, [caseDataArr, selectedArea])
 

@@ -1,6 +1,6 @@
 import React from 'react'
 // import chroma from 'chroma-js'
-import { pathData } from '../config'
+import { pathData } from '../../config'
 import MapHighlight from './MapHighlight'
 import { pure } from 'recompose';
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Chart from 'chart.js'
-import { chartSettings, trimArea } from '../util'
+import { chartSettings, trimArea } from '../../util'
 import { pure } from 'recompose';
 
 function CasesChart({ caseDataArr, selectedArea, strokeLondon, setPopup }) {

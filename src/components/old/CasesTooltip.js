@@ -1,5 +1,5 @@
 import React from 'react'
-import { caseTooltipOffset as offset } from '../config'
+import { caseTooltipOffset as offset } from '../../config'
 
 export default function CasesTooltip({ mousePos, cases, selectedArea }) {
 
@@ -9,7 +9,7 @@ export default function CasesTooltip({ mousePos, cases, selectedArea }) {
     return {cases: casesSum, deaths: deathsSum}
   }
 
-  const selectedAreaName = ([undefined, null].includes(selectedArea)) ? "London" : trimArea(selectedArea)
+  const selectedAreaName = ([undefined, null].includes(selectedArea)) ? "London" : selectedArea
   const areaData = (selectedAreaName === "London") ? sumCases() : cases.filter(area => area.name === selectedAreaName)
   const casesNumber = (selectedAreaName === "London") ? areaData.cases : (areaData.length > 0) ? areaData[0].cases : -1
 
