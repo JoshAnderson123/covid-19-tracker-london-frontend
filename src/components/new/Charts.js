@@ -8,14 +8,22 @@ function Charts({ caseDataArr, selectedArea, strokeLondon }) {
   const caseChart = useRef()
   const deathChart = useRef()
 
-  // let [chartHeight, setChartHeight] = useState(0)
-
   useEffect(() => {
-    // window.onresize = (e) => {
-      
-    //   const containerRect = document.querySelector("#chart-container-cases").getBoundingClientRect()
-    //   setChartHeight(containerRect.height/2)
-    // }
+    window.onresize = (e) => {
+
+      const casesContainerRect = document.querySelector("#chart-container-cases").getBoundingClientRect()
+      const deathsContainerRect = document.querySelector("#chart-container-deaths").getBoundingClientRect()
+      const casesChart = document.querySelector("#cases-chart")
+      const deathsChart = document.querySelector("#deaths-chart")
+      casesChart.style.width = `${casesContainerRect.width - 0}px`
+      casesChart.style.height = `${casesContainerRect.height - 4}px` // -4
+      deathsChart.style.width = `${deathsContainerRect.width - 0}px`
+      deathsChart.style.height = `${deathsContainerRect.height - 4}px`
+      casesChart.width = casesContainerRect.width - 0
+      casesChart.height = casesContainerRect.height - 4
+      deathsChart.width = deathsContainerRect.width - 0
+      deathsChart.height = deathsContainerRect.height - 4
+    }
 
     Chart.pluginService.register({
       beforeDraw: function (chart, easing) {

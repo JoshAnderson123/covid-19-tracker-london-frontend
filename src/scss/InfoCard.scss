@@ -16,19 +16,27 @@ $light-grey-color: #fafafa;
   width: 100%;
   flex-grow: 1;
   flex-shrink: 1;
+  height: 300px;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  background-color: $light-grey-color;
-  overflow: hidden;
+  // background-color: $light-grey-color;
+  // background-color: rgb(0, 217, 255);
+  // overflow: hidden;
 }
 
 .chart-container {
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  // opacity: 0.3;
+  // overflow: hidden;
   // background-color: aqua;
+  // background-color: chartreuse;
 }
+
+// .chart-container:nth-child(2) {
+//   background-color: rgb(255, 102, 0);
+// }
 
 #cases-chart,
 #deaths-chart {
@@ -36,5 +44,5 @@ $light-grey-color: #fafafa;
   flex-shrink: 1;
   position: relative;
   // background-color: blueviolet;
-  overflow: hidden;
+  // overflow: hidden;
 }
