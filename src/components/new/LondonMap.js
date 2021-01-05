@@ -40,11 +40,12 @@ function LondonMap({ cases, selectedArea, setSelectedArea, strokeLondon }) {
 
   return (
     <div className="map-wrapper flex-center">
-      <div className="map-container size-of-parent">
+      <div className="map-container stretch">
         <svg
           version="1.1"
-          className={`london-map size-of-parent ${strokeLondon ? "stroke-london" : ""}`}
+          className={`london-map stretch ${strokeLondon ? "stroke-london" : ""}`}
           xmlns="http://www.w3.org/2000/svg"
+          xlink="http://www.w3.org/1999/xlink"
           x="0px" y="0px" viewBox="0 0 756 606.7"
           width={`${rect.width}px`} height={`${rect.height}px`}
         >

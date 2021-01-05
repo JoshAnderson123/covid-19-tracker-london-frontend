@@ -1,8 +1,7 @@
 import React from 'react'
 import '../../css/SideBar.css'
 import icon from "../../media/virus-icon.svg"
-import { Box, Flex, Image, AspectRatio } from "@chakra-ui/react"
-import { bp } from '../../util'
+import { Box, Image, AspectRatio } from "@chakra-ui/react"
 
 export default function SideBar() {
   return (
