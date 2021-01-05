@@ -55,6 +55,18 @@ export function formatReadableDateShort(date) {
   return `${month} ${day}, ${year}`
 }
 
+export function formatReadableDateShorter(date) {
+
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const days = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st']
+
+  const d = new Date(date),
+    month = months[d.getMonth()],
+    day = days[d.getDate() - 1]
+
+  return `${month} ${day}`
+}
+
 export function handleKeyPress(e, date, updateDate, sliderData) {
 
   if (![KEY_LEFT, KEY_RIGHT].includes(e.keyCode)) return
@@ -113,14 +125,14 @@ export function chartSettings(labels, data, areaName, title) {
       scales: {
         yAxes: [{
           ticks: {
-            beginAtZero: true
+            beginAtZero: true 
           }
         }],
         xAxes: [{
           type: 'time',
           ticks: {
             autoSkip: true,
-            maxTicksLimit: 10,
+            maxTicksLimit: 8,
             maxRotation: 0,
             minRotation: 0
           }
@@ -148,7 +160,7 @@ export function chartSettings(labels, data, areaName, title) {
       },
       chartArea: {
         backgroundColor: 'rgb(255, 255,255)'
-    }
+      }
     }
   }
 }
@@ -157,7 +169,7 @@ export function getBoroughSummaryData(areaNameUntrim, caseDataArr) {
 
   const areaName = trimArea(areaNameUntrim)
 
-  if (!caseDataArr || !areaName) return {population: "NaN", totalCases: "NaN", totalDeaths: "NaN"}
+  if (!caseDataArr || !areaName) return { population: "NaN", totalCases: "NaN", totalDeaths: "NaN" }
   let population, totalCases, totalDeaths
 
   if (areaName === "London") {
@@ -170,7 +182,7 @@ export function getBoroughSummaryData(areaNameUntrim, caseDataArr) {
     totalDeaths = caseDataArr.reduce((acc, date) => acc + date.data.filter(area => area.name === areaName)[0].deaths, 0)
   }
 
-  return {population, totalCases, totalDeaths}
+  return { population, totalCases, totalDeaths }
 }
 
 export function getBoroughLatestData(areaNameUntrim, caseData, sliderData) {
@@ -185,7 +197,7 @@ export function getBoroughLatestData(areaNameUntrim, caseData, sliderData) {
     cases = caseData[sliderData.endDate][areaName].cases
     deaths = caseData[sliderData.endDate][areaName].deaths
   }
-  return {date, cases, deaths, tier}
+  return { date, cases, deaths, tier }
 }
 
 export function numberWithCommas(x) {
@@ -199,5 +211,13 @@ export function trimArea(selectedArea) {
 
 export function casesPerHundredThousand(casesInArea, areaName) {
   const decimalPlaces = 0
-  return Math.round((casesInArea * (10**decimalPlaces)) / (boroughPopulations[trimArea(areaName)] / 100000)) / (10**decimalPlaces)
+  return Math.round((casesInArea * (10 ** decimalPlaces)) / (boroughPopulations[trimArea(areaName)] / 100000)) / (10 ** decimalPlaces)
+}
+
+export function bp(arr) {
+  const mediaQuery = {}
+  if (![null, undefined].includes(arr[0])) mediaQuery.base = arr[0] // You always need base
+  if (![null, undefined].includes(arr[1])) mediaQuery.tablet = arr[1]
+  if (![null, undefined].includes(arr[2])) mediaQuery.laptop = arr[2]
+  return mediaQuery
 }

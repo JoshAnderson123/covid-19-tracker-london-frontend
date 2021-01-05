@@ -141,3 +141,13 @@ $tooltip-text-color: #222;
   font: 500 0.9rem "Segoe UI";
   color: $tooltip-text-color;
 }
+
+@media (max-width: 700px) {
+  .map-legend {
+    width: 150px;
+  }
+
+  .map-stats .left-container {
+    width: 120px;
+  }
+}

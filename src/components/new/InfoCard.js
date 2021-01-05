@@ -3,7 +3,7 @@ import '../../css/Cards.css'
 import '../../css/InfoCard.css'
 import StatBlock from './StatBlock'
 import Charts from './Charts'
-import { getBoroughSummaryData, numberWithCommas, formatReadableDateShort, formatDate, trimArea } from '../../util'
+import { getBoroughSummaryData, numberWithCommas, formatReadableDateShort, formatReadableDateShorter, formatDate, trimArea } from '../../util'
 
 export default function InfoCard({ caseDataArr, selectedArea, sliderData, caseData }) {
 
@@ -25,7 +25,7 @@ export default function InfoCard({ caseDataArr, selectedArea, sliderData, caseDa
   }
 
   return (
-    <div className="card-container flex-v-start">
+    <div className="card-container flex-v-start" id="info-card">
       <div className="card-title">{`${trimArea(selectedArea)}`}</div>
       <div className="separator-line"></div>
       <div className="info-stats-container" style={{ marginBottom: "20px" }}>
@@ -36,7 +36,7 @@ export default function InfoCard({ caseDataArr, selectedArea, sliderData, caseDa
       <div className="card-title-small">Latest Figures</div>
       <div className="separator-line"></div>
       <div className="info-stats-container" style={{ marginBottom: "20px" }}>
-        <StatBlock hAlign={"ta-left"} vDirection={"bottom"} stat1={"Date"} stat2={formatReadableDateShort(sliderData.endDate)} />
+        <StatBlock hAlign={"ta-left"} vDirection={"bottom"} stat1={"Date"} stat2={window.innerWidth < 500 ? formatReadableDateShorter(sliderData.endDate) : formatReadableDateShort(sliderData.endDate)} />
         <StatBlock hAlign={"ta-left"} vDirection={"bottom"} stat1={"Cases"} stat2={(latestCases !== undefined) ? numberWithCommas(latestCases) : "Unconfirmed"} />
         <StatBlock hAlign={"ta-left"} vDirection={"bottom"} stat1={"Deaths"} stat2={(latestDeaths !== undefined) ? numberWithCommas(latestDeaths): "Unconfirmed"} />
         <StatBlock hAlign={"ta-left"} vDirection={"bottom"} stat1={"Tier"} stat2={"4"} />

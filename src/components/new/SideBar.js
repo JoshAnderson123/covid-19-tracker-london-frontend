@@ -1,20 +1,23 @@
 import React from 'react'
 import '../../css/SideBar.css'
 import icon from "../../media/virus-icon.svg"
+import { Box, Flex, Image, AspectRatio } from "@chakra-ui/react"
+import { bp } from '../../util'
 
 export default function SideBar() {
   return (
-    <div className="sidebar-container flex-v-start">
-      <div className="virus-icon">
-        <img src={icon} alt="virus icon" className="size-of-parent" />
-      </div>
-      <div className="sidebar-title sidebar-text ta-center" style={{marginTop: "40px"}}>Covid-19 Tracker London</div>
-      <div className="font-medium sidebar-text ta-center" style={{marginTop: "40px"}}>Imperial College London</div>
-      <div className="font-medium-small sidebar-text ta-center" style={{marginTop: "40px"}}>Josh Anderson</div>
-      <div className="font-medium-small sidebar-text ta-center">Design Engineering</div>
-      <div className="font-medium-small sidebar-text ta-center">Sensing and IoT</div>
-      {/* <div className="font-medium-small sidebar-text ta-center" style={{marginTop: "40px"}}>Last Updated:</div>
-      <div className="font-medium-small sidebar-text ta-center">Jan 3rd, 2020</div> */}
+    <div className="sb-container f-vs" justify="space-around" align="center" divGrow="0" bgColor="#fff">
+      <AspectRatio className="sb-logo" ratio={1} flexShrink="0">
+        <Image className="stretch" objectFit="contain" src={icon} alt="virus icon" />
+      </AspectRatio>
+      <Box className="sb-title">Covid-19 Tracker London</Box>
+      <Box className="sb-details">
+        <Box>Josh Anderson</Box>
+        <Box>Design Engineering</Box>
+        <Box>Sensing and IoT</Box>
+      </Box>
+      {/* <Box className="font-medium-small sidebar-text ta-center" style={{marginTop: "40px"}}>Last Updated:</Box>
+      <Box className="font-medium-small sidebar-text ta-center">Jan 3rd, 2020</Box> */}
     </div>
   )
 }
