@@ -1,5 +1,17 @@
 @import "variables";
 
+@font-face {
+  font-family: SegoeUI;
+  src: url('../media/fonts/segoeui.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: SegoeUI;
+  src: url('../media/fonts/segoeuib.ttf');
+  font-weight: bold;
+}
+
 .page-container {
   position: relative;
   width: 100vw;

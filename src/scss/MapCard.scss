@@ -9,18 +9,6 @@ $slider-fork-width: 2px;
 $slider-fork-label-color: #555;
 $tooltip-text-color: #222;
 
-@font-face {
-  font-family: SegoeUI;
-  src: url('../media/fonts/segoeui.ttf');
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: SegoeUI;
-  src: url('../media/fonts/segoeuib.ttf');
-  font-weight: bold;
-}
-
 .date-slider-container {
   height: 100px;
   cursor: pointer;

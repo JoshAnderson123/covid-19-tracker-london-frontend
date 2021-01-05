@@ -8,6 +8,9 @@ import { pure } from 'recompose';
 
 function LondonMap({ cases, selectedArea, setSelectedArea, strokeLondon }) {
 
+  const mapContainerRect = document.querySelector(".map-container")
+  const rect = mapContainerRect ? mapContainerRect.getBoundingClientRect() : { width: 100, height: 100 }
+
   function fillArea(areaName) {
     if (cases === undefined) return "#0000ff"
     if (cases.length === 0) return "440044"
@@ -43,6 +46,7 @@ function LondonMap({ cases, selectedArea, setSelectedArea, strokeLondon }) {
           className={`london-map size-of-parent ${strokeLondon ? "stroke-london" : ""}`}
           xmlns="http://www.w3.org/2000/svg"
           x="0px" y="0px" viewBox="0 0 756 606.7"
+          width={`${rect.width}px`} height={`${rect.height}px`}
         >
           {renderPaths()}
         </svg>

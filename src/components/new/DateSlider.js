@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import '../../css/MapCard.css'
 import { pure } from 'recompose';
-import { formatDate, formatReadableDate } from '../../util'
+import { formatDate, formatReadableDate, formatReadableDateShort } from '../../util'
 
 function DateSlider({ sliderData, date, updateDate, mousePress }) {
 
@@ -46,7 +46,7 @@ function DateSlider({ sliderData, date, updateDate, mousePress }) {
       onTouchMove={e => updateDateWithSlider(e, "touch")}
     >
 
-      <div className="date-label ">{formatReadableDate(date)}</div>
+      <div className="date-label ">{ window.innerWidth < 700 ? formatReadableDateShort(date) : formatReadableDate(date) }</div>
 
       <div className="date-slider">
         <div className="slide-thumb" style={{ left: calculateDateThumbOffset() }}></div>
