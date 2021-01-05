@@ -160,13 +160,7 @@ export function chartSettings(labels, data, areaName, title) {
       },
       chartArea: {
         backgroundColor: 'rgb(255, 255,255)'
-      },
-      plugins: [{
-        beforeDraw: function(c) {
-           const chartWidth = c.chart.width;
-           c.scales['x-axis'].options.ticks.fontSize = chartWidth * 6 / 100; //fontSize: 6% of canvas height
-        }
-     }]
+      }
     }
   }
 }

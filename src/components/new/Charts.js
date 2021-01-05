@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Chart from 'chart.js'
 import { chartSettings, trimArea } from '../../util'
 import { pure } from 'recompose';
@@ -11,18 +11,16 @@ function Charts({ caseDataArr, selectedArea, strokeLondon }) {
   useEffect(() => {
     window.onresize = (e) => {
 
-      const casesContainerRect = document.querySelector("#chart-container-cases").getBoundingClientRect()
-      const deathsContainerRect = document.querySelector("#chart-container-deaths").getBoundingClientRect()
       const casesChart = document.querySelector("#cases-chart")
       const deathsChart = document.querySelector("#deaths-chart")
-      casesChart.style.width = `${casesContainerRect.width - 0}px`
-      casesChart.style.height = `${casesContainerRect.height - 4}px` // -4
-      deathsChart.style.width = `${deathsContainerRect.width - 0}px`
-      deathsChart.style.height = `${deathsContainerRect.height - 4}px`
-      casesChart.width = casesContainerRect.width - 0
-      casesChart.height = casesContainerRect.height - 4
-      deathsChart.width = deathsContainerRect.width - 0
-      deathsChart.height = deathsContainerRect.height - 4
+      casesChart.style.width = `0px`
+      casesChart.style.height = `0px`
+      deathsChart.style.width = `0px`
+      deathsChart.style.height = `0px`
+      casesChart.width = 0
+      casesChart.height = 0
+      deathsChart.width = 0
+      deathsChart.height = 0
     }
 
     Chart.pluginService.register({
