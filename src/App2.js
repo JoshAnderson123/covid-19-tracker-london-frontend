@@ -49,8 +49,11 @@ export default function App2() {
         tabIndex="0"
         onKeyDown={e => handleKeyPress(e, date, updateDate, sliderData)}
         onMouseMove={e => handleMouseMove(e, mousePos, setMousePos, setStrokeLondon, false, selectedArea)}
+        onTouchMove={e => handleMouseMove(e, mousePos, setMousePos, setStrokeLondon, false, selectedArea)}
         onMouseDown={e => setMousePress(true)}
+        onTouchStart={e => setMousePress(true)}
         onMouseUp={e => setMousePress(false)}
+        onTouchEnd={e => setMousePress(false)}
       >
         <MapCard
           sliderData={sliderData}

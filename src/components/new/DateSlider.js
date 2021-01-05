@@ -25,10 +25,13 @@ function DateSlider({ sliderData, date, updateDate, mousePress }) {
     }
   }
 
-  function updateDateWithSlider(e) {
+  function updateDateWithSlider(e, type) {
+
+    const xVal = type === "touch" ? e.touches[0].clientX : e.clientX
+
     if (!mousePress) return
     const rect = slider.current.getBoundingClientRect()
-    let selectedDateID = Math.round(((e.clientX - rect.left) / (slider.current.offsetWidth)) * sliderData.dateSpan)
+    let selectedDateID = Math.round(((xVal - rect.left) / (slider.current.offsetWidth)) * sliderData.dateSpan)
     if (selectedDateID > sliderData.dateSpan) selectedDateID = sliderData.dateSpan
     if (selectedDateID < 0) selectedDateID = 0
     const selectedDate = new Date(sliderData.startDate)
@@ -37,7 +40,11 @@ function DateSlider({ sliderData, date, updateDate, mousePress }) {
   }
 
   return (
-    <div className="date-slider-container flex-center w-100" onMouseMove={e => updateDateWithSlider(e)}>
+    <div className="date-slider-container flex-center w-100"
+
+      onMouseMove={e => updateDateWithSlider(e, "mouse")}
+      onTouchMove={e => updateDateWithSlider(e, "touch")}
+    >
 
       <div className="date-label ">{formatReadableDate(date)}</div>
 

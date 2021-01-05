@@ -11,13 +11,13 @@ $separator-line-color: #bbb;
 }
 
 .card-title {
-  font: 700 2rem "Segoe UI";
+  font: bold 2rem SegoeUI;
   width: 100%;
   color: $title-text-color;
 }
 
 .card-title-small {
-  font: 700 1.5rem "Segoe UI";
+  font: bold 1.5rem SegoeUI;
   width: 100%;
   color: $title-text-color;
 }
@@ -30,12 +30,12 @@ $separator-line-color: #bbb;
 }
 
 .stat-big {
-  font: 700 1.2rem "Segoe UI";
+  font: bold 1.2rem SegoeUI;
   color: $stats-text-color;
 }
 
 .stat-small {
-  font: 700 1rem "Segoe UI";
+  font: bold 1rem SegoeUI;
   color: $stats-text-color;
 }
 
@@ -65,17 +65,17 @@ $separator-line-color: #bbb;
   }
 
   .stat-big {
-    font: 700 1rem "Segoe UI";
+    font: bold 1rem SegoeUI;
     color: $stats-text-color;
   }
   
   .stat-small {
-    font: 700 0.8rem "Segoe UI";
+    font: bold 0.8rem SegoeUI;
     color: $stats-text-color;
   }
   
   #map-card {
-    height: 700px;
+    height: boldpx;
   }
 
   #info-card {

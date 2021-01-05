@@ -148,7 +148,7 @@ $map-background-opacity: 0;
   /* background-color: seagreen; */
   overflow: hidden;
   white-space: nowrap;
-  font: 400 1.5rem "Segoe UI";
+  font: normal 1.5rem "Segoe UI";
 }
 
 .case-tooltip-container > .case-label {
@@ -157,7 +157,7 @@ $map-background-opacity: 0;
   /* background-color: red; */
   margin-top: 3px;
   overflow: hidden;
-  font: 400 1.25rem "Segoe UI";
+  font: normal 1.25rem "Segoe UI";
 }
 
 .charts-container {
@@ -176,7 +176,7 @@ $map-background-opacity: 0;
   height: 50px;
   margin-top: 10px;
   color: #444;
-  font: 500 1.5rem "Segoe UI";
+  // font: 500 1.5rem "Segoe UI";
   text-align: center;
   border-bottom: 1px solid #ccc;
 }

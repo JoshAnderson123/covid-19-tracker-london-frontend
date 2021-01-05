@@ -24,14 +24,14 @@ $logo-size: 50%;
 
 .sb-title {
   text-align: center;
-  font: 700 2.3rem "Segoe UI";
+  font: bold 2.3rem SegoeUI;
   width: 10rem;
   margin-top: 2rem;
 }
 
 .sb-details {
   text-align: center;
-  font: 400 1rem "Segoe UI";
+  font: normal 1rem SegoeUI;
   width: 10rem;
   margin-top: 2.5rem;
 }
@@ -52,7 +52,7 @@ $logo-size: 50%;
   }
 
   .sb-title {
-    font: 700 1.5rem "Segoe UI";
+    font: bold 1.5rem SegoeUI;
     text-align: right;
     width: 15rem; 
     margin-top: 0;

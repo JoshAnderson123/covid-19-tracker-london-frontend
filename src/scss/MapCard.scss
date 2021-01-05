@@ -9,6 +9,18 @@ $slider-fork-width: 2px;
 $slider-fork-label-color: #555;
 $tooltip-text-color: #222;
 
+@font-face {
+  font-family: SegoeUI;
+  src: url('../media/fonts/segoeui.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: SegoeUI;
+  src: url('../media/fonts/segoeuib.ttf');
+  font-weight: bold;
+}
+
 .date-slider-container {
   height: 100px;
   cursor: pointer;
@@ -19,7 +31,7 @@ $tooltip-text-color: #222;
 }
 
 .date-label {
-  font: 700 1.8rem "Segoe UI";
+  font: bold 1.8rem SegoeUI;
   margin-bottom: 15px;
   color: $title-text-color;
 }
@@ -55,7 +67,7 @@ $tooltip-text-color: #222;
 
 .slider-fork-label {
   color: $slider-fork-label-color;
-  font: 400 0.8rem "Segoe UI";
+  font: normal 0.8rem SegoeUI;
 }
 
 .map-stats {
@@ -81,7 +93,7 @@ $tooltip-text-color: #222;
 .legend-label {
   margin-top: 8px;
   margin-bottom: 3px;
-  font: 600 1rem "Segoe UI";
+  font: bold 1rem SegoeUI;
   color: $title-text-color;
 }
 
@@ -96,7 +108,7 @@ $tooltip-text-color: #222;
 }
 
 .legend-tick {
-  font: 400 0.8rem "Segoe UI";
+  font: normal 0.8rem SegoeUI;
   color: $title-text-color;
   // background-color: crimson;
   width: 30px;
@@ -128,7 +140,7 @@ $tooltip-text-color: #222;
   /* background-color: seagreen; */
   overflow: hidden;
   white-space: nowrap;
-  font: 600 1.2rem "Segoe UI";
+  font: bold 1.2rem SegoeUI;
   color: $tooltip-text-color;
 }
 
@@ -138,7 +150,7 @@ $tooltip-text-color: #222;
   /* background-color: red; */
   // margin-top: 3px;
   overflow: hidden;
-  font: 500 0.9rem "Segoe UI";
+  font: bold 0.9rem SegoeUI;
   color: $tooltip-text-color;
 }
 

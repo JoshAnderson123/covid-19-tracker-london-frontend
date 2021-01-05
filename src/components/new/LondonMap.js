@@ -25,6 +25,7 @@ function LondonMap({ cases, selectedArea, setSelectedArea, strokeLondon }) {
           key={key}
           fill={fillArea(fillStr)}
           onClick={() => setSelectedArea(fillStr)}
+          onTouchStart={() => setSelectedArea(fillStr)}
           onMouseEnter={() => setSelectedArea(key)}
           onMouseLeave={() => setSelectedArea("London")}
           d={value}
