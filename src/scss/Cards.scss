@@ -72,3 +72,20 @@ $separator-line-color: #bbb;
     height: 800px;
   }
 }
+
+@media (max-width: 500px) {  
+
+  #map-title {
+    display: none;
+  }
+
+  #map-card {
+    height: 560px;
+  }
+
+  .card-container {
+    border-radius: 0;
+    height: 800px;
+    padding: 16px 14px 14px 14px;
+  }
+}

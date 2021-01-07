@@ -59,3 +59,9 @@ $map-highlight-stroke-width: 3px;
   stroke: $map-highlight-stroke-color;
   stroke-width: $map-highlight-stroke-width;
 }
+
+// @media (max-width: 500px) {
+//   .map-wrapper {
+//     width: calc(100% + 10px);
+//   }
+// }

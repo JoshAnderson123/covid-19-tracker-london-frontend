@@ -151,3 +151,13 @@ $tooltip-text-color: #222;
     width: 120px;
   }
 }
+
+@media (max-width: 500px) {
+  .date-slider-container {
+    margin-top: 10px;
+  }
+
+  .map-stats {
+    width: 95%;
+  }
+}

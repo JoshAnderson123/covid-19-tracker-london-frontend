@@ -92,6 +92,12 @@ export function handleMouseMove(e, mousePos, setMousePos, setStrokeLondon, popup
   }
 }
 
+export function handleMouseMove2(e, setMousePos, type) {
+  const x = type === "touch" ? e.touches[0].clientX : e.clientX
+  const y = type === "touch" ? e.touches[0].clientY : e.clientY
+  setMousePos({ x, y })
+}
+
 export function calculateBgImgData() {
   const mapContainer = document.querySelector(".map-container")
   if (!mapContainer) return
