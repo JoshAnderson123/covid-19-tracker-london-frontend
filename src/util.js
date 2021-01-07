@@ -227,3 +227,8 @@ export function bp(arr) {
   if (![null, undefined].includes(arr[2])) mediaQuery.laptop = arr[2]
   return mediaQuery
 }
+
+export function toCSS(areaName) {
+  const cssName = areaName.replace(" 2", "").replaceAll(" ", "-")
+  return cssName
+}

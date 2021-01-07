@@ -39,7 +39,6 @@ export default function InfoCard({ caseDataArr, selectedArea, sliderData, caseDa
         <StatBlock hAlign={"ta-left"} vDirection={"bottom"} stat1={"Date"} stat2={window.innerWidth < 500 ? formatReadableDateShorter(sliderData.endDate) : formatReadableDateShort(sliderData.endDate)} />
         <StatBlock hAlign={"ta-left"} vDirection={"bottom"} stat1={"Cases"} stat2={(latestCases !== undefined) ? numberWithCommas(latestCases) : "Unconfirmed"} />
         <StatBlock hAlign={"ta-left"} vDirection={"bottom"} stat1={"Deaths"} stat2={(latestDeaths !== undefined) ? numberWithCommas(latestDeaths): "Unconfirmed"} />
-        <StatBlock hAlign={"ta-left"} vDirection={"bottom"} stat1={"Tier"} stat2={"4"} />
       </div>
       <div className="card-title-small">Timeline</div>
       <div className="separator-line"></div>

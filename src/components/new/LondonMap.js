@@ -2,7 +2,7 @@ import React from 'react'
 import '../../css/LondonMap.css'
 import chroma from 'chroma-js'
 import { pathData } from '../../config'
-import { casesPerHundredThousand } from '../../util'
+import { casesPerHundredThousand, toCSS } from '../../util'
 import MapHighlight from './MapHighlight'
 import { pure } from 'recompose';
 
@@ -25,6 +25,7 @@ function LondonMap({ cases, selectedArea, setSelectedArea, strokeLondon }) {
       const fillStr = key.replace(" 2", "")
       paths.push(
         <path
+          className={toCSS(fillStr)} // Watch out
           key={key}
           fill={fillArea(fillStr)}
           onClick={() => setSelectedArea(fillStr)}

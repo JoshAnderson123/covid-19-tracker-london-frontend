@@ -72,4 +72,41 @@ export const boroughPopulations = {
   "Westminster": 261317
 }
 
+export const tooltipAreaOffset = {
+  "Barking and Dagenham": {x: -3, y: 0},
+  "Barking and Dagenham 2": {x: -2, y: 0},
+  "Barnet": 	{x: -0.15, y: -0.15},
+  "Bexley": {x: -0.8, y: -0.3},
+  "Brent": {x: 0, y: 0},
+  "Bromley": {x: -0.5, y: -0.5},
+  "Camden": {x: 0, y: 0},
+  "Croydon": {x: -0.3, y: -0.3},
+  "Ealing": {x: 0, y: 0},
+  "Enfield": {x: -0.1, y: 0},
+  "Greenwich": 	{x: -0.3, y: 0},
+  "Hackney and City of London": {x: 0, y: 0},
+  "Hackney and City of London 2": {x: 0, y: 0},
+  "Hammersmith and Fulham": {x: 0, y: 0},
+  "Haringey": {x: -0.3, y: -0.1},
+  "Harrow": {x: -0.3, y: -0.3},
+  "Havering": {x: -1.7, y: 0},
+  "Hillingdon": {x: -0.25, y: -0.25},
+  "Hounslow": {x: -0.5, y: -0.35},
+  "Islington": {x: 0, y: 0},
+  "Kensington and Chelsea": {x: 0, y: 0},
+  "Kingston upon Thames": {x: -0.3, y: -0.4},
+  "Lambeth": {x: 0, y: 0},
+  "Lewisham": {x: -0.1, y: -0.1},
+  "Merton": {x: -0.2, y: -0.2},
+  "Newham": {x: -0.3, y: 0},
+  "Redbridge": {x: -1, y: 0},
+  "Richmond upon Thames": {x: -0.4, y: -0.4},
+  "Southwark": {x: -0.3, y: -0.3},
+  "Sutton": {x: -0.15, y: -0.15},
+  "Tower Hamlets": {x: 0, y: 0},
+  "Waltham Forest": {x: -1, y: 0},
+  "Wandsworth": {x: 0, y: 0},
+  "Westminster": {x: 0, y: 0}
+}
+
 export const caseTooltipOffset = { x: 20, y: 20 }
