@@ -40,7 +40,7 @@ function LondonMap({ cases, selectedArea, setSelectedArea, strokeLondon, popup, 
   }
 
   return (
-    <div className="map-wrapper flex-center">
+    <div className="map-wrapper f-c">
       <div className="map-container" onClick={() => { if (strokeLondon) setPopup(true) }}>
         <svg
           version="1.1"

@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import './css/App2.css'
 import axios from 'axios'
 import { caseDataArrToDict, handleKeyPress, formatDate } from './util'
-import {SERVER_URL} from './config'
+import { SERVER_URL } from './config'
 import SideBar from './components/new/SideBar'
 import MapCard from './components/new/MapCard'
 import InfoCard from './components/new/InfoCard'
+import Loading from './components/new/Loading'
 
 let caseData, caseDataArr
 
@@ -13,10 +14,9 @@ export default function App2() {
 
   let [date, setDate] = useState("2020-12-10")
   let [cases, setCases] = useState([])
-  // let [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   let [selectedArea, setSelectedArea] = useState("London")
   let [sliderData, setSliderData] = useState({})
-  // let [strokeLondon, setStrokeLondon] = useState(false)
+  let [loading, setLoading] = useState(true)
 
 
   useEffect(() => {
@@ -32,6 +32,7 @@ export default function App2() {
       const dateSpan = Math.round((endDate - startDate) / (24 * 60 * 60 * 1000))
       setSliderData({ startDate, endDate, dateSpan })
       updateDate(formatDate(endDate))
+      setLoading(false)
     })
     // eslint-disable-next-line
   }, [])
@@ -41,30 +42,22 @@ export default function App2() {
     setCases(caseData[formatDate(currentDate)])
   }
 
-  return (
-    <div className="page-container">
+  function renderApp() {
+    if (loading) return <Loading />
+    return <>
       <SideBar />
       <div
         className="content-container"
         tabIndex="0"
         onKeyDown={e => handleKeyPress(e, date, updateDate, sliderData)}
-        // onMouseMove={e => handleMouseMove(e, mousePos, setMousePos, setStrokeLondon, false, selectedArea)}
-        // onTouchMove={e => handleMouseMove(e, mousePos, setMousePos, setStrokeLondon, false, selectedArea)}
-        // onMouseDown={e => setMousePress(true)}
-        // onTouchStart={e => setMousePress(true)}
-        // onMouseUp={e => setMousePress(false)}
-        // onTouchEnd={e => setMousePress(false)}
       >
         <MapCard
           sliderData={sliderData}
           date={date}
           updateDate={updateDate}
-          // mousePress={mousePress}
-          // mousePos={mousePos}
           cases={cases}
           selectedArea={selectedArea}
           setSelectedArea={setSelectedArea}
-          // strokeLondon={strokeLondon}
           caseData={caseData}
         />
         <InfoCard
@@ -74,6 +67,12 @@ export default function App2() {
           caseData={caseData}
         />
       </div>
+    </>
+  }
+
+  return (
+    <div className="page-container">
+      {renderApp()}
     </div>
   )
 }

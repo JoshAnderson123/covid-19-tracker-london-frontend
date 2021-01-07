@@ -21,7 +21,7 @@ function DateSlider({ sliderData, date, updateDate, mousePress }) {
       const sliderThumbOffsetPercentage = (dateId / dateSpan) * 100
       return `calc(${sliderThumbOffsetPercentage}% - ${slideThumb.current.offsetWidth / 2}px)`
     } else {
-      return "0px"
+      return `calc(100% - 9px)`
     }
   }
 
@@ -40,7 +40,7 @@ function DateSlider({ sliderData, date, updateDate, mousePress }) {
   }
 
   return (
-    <div className="date-slider-container flex-center w-100"
+    <div className="date-slider-container f-c w-100"
 
       onMouseMove={e => updateDateWithSlider(e, "mouse")}
       onTouchMove={e => updateDateWithSlider(e, "touch")}

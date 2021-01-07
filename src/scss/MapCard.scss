@@ -35,7 +35,7 @@ $tooltip-text-color: #222;
 .date-slider .slide-thumb {
   position: absolute;
   top: -($slider-thumb-size - $slider-height)/2 - 1px;
-  left: 30px;
+  left: 100%;
   height: $slider-thumb-size;
   width: $slider-thumb-size;
   background-color: $slider-thumb-color;

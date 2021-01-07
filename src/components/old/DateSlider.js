@@ -36,7 +36,7 @@ function DateSlider({ sliderData, date, updateDate, mousePress }) {
   }
 
   return (
-    <div className="date-slider-container flex-center" onMouseMove={e => slideTest(e)}>
+    <div className="date-slider-container f-c" onMouseMove={e => slideTest(e)}>
       <div className="date-slider">
         <div className="slide-thumb" style={{ left: calculateDateThumbOffset() }}></div>
       </div>

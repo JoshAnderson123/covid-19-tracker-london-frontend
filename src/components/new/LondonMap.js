@@ -40,7 +40,7 @@ function LondonMap({ cases, selectedArea, setSelectedArea, strokeLondon }) {
   }
 
   return (
-    <div className="map-wrapper flex-center">
+    <div className="map-wrapper f-c">
       <div className="map-container stretch">
         <svg
           version="1.1"

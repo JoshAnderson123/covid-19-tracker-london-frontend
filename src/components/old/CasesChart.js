@@ -42,8 +42,8 @@ function CasesChart({ caseDataArr, selectedArea, strokeLondon, setPopup }) {
   }
 
   return (
-    <div className={`popup-container fill-parent flex-center ${closing ? "popup-closing" : "popup-opening"}`} onClick={() => closePopup()}>
-      <div className="charts-container flex-center">
+    <div className={`popup-container fill-parent f-c ${closing ? "popup-closing" : "popup-opening"}`} onClick={() => closePopup()}>
+      <div className="charts-container f-c">
         <div className="popup-title">{(strokeLondon || !selectedArea) ? "London" : trimArea(selectedArea)}</div>
         <div className="chart-container">
           <canvas id="cases-chart"></canvas>
