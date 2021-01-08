@@ -12,8 +12,9 @@ export default function SideBar() {
       <Box className="sb-title">Covid-19 Tracker London</Box>
       <Box className="sb-details">
         <Box>Josh Anderson</Box>
-        <Box>Design Engineering</Box>
-        <Box>Sensing and IoT</Box>
+        <Box mt="10px">Sensing and IoT</Box>
+        <Box mt="10px">Design Engineering</Box>
+        <Box mt="10px">Imperial College London</Box>
       </Box>
     </div>
   )
