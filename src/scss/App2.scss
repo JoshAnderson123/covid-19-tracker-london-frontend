@@ -1,14 +1,30 @@
 @import "variables";
 
+// @font-face {
+//   font-family: SegoeUI;
+//   src: url("../media/fonts/segoeui.ttf");
+//   font-weight: normal;
+// }
+
+// @font-face {
+//   font-family: SegoeUI;
+//   src: url("../media/fonts/segoeuib.ttf");
+//   font-weight: bold;
+// }
+
 @font-face {
-  font-family: SegoeUI;
-  src: url("../media/fonts/segoeui.ttf");
+  font-family: Roboto;
+  src:
+    url('../media/fonts/roboto-v20-latin-regular.woff2') format('woff2'),
+    url('../media/fonts/roboto-v20-latin-regular.woff') format('woff');
   font-weight: normal;
 }
 
 @font-face {
-  font-family: SegoeUI;
-  src: url("../media/fonts/segoeuib.ttf");
+  font-family: Roboto;
+  src:
+    url('../media/fonts/roboto-v20-latin-700.woff2') format('woff2'),
+    url('../media/fonts/roboto-v20-latin-700.woff') format('woff');
   font-weight: bold;
 }
 
@@ -115,19 +131,19 @@
 
 // Text
 .font-title {
-  font: bold 2rem SegoeUI;
+  font: bold 2rem Roboto;
 }
 
 .font-medium {
-  font: normal 1.5rem SegoeUI;
+  font: normal 1.5rem Roboto;
 }
 
 .font-medium-small {
-  font: normal 1rem SegoeUI;
+  font: normal 1rem Roboto;
 }
 
 .font-small {
-  font: normal 0.8rem SegoeUI;
+  font: normal 0.8rem Roboto;
 }
 
 .ta-left {

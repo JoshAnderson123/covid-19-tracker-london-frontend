@@ -19,7 +19,7 @@ $tooltip-text-color: #222;
 }
 
 .date-label {
-  font: bold 1.8rem SegoeUI;
+  font: bold 1.8rem Roboto;
   margin-bottom: 15px;
   color: $title-text-color;
 }
@@ -55,7 +55,7 @@ $tooltip-text-color: #222;
 
 .slider-fork-label {
   color: $slider-fork-label-color;
-  font: normal 0.8rem SegoeUI;
+  font: normal 0.8rem Roboto;
 }
 
 .map-stats {
@@ -81,7 +81,7 @@ $tooltip-text-color: #222;
 .legend-label {
   margin-top: 8px;
   margin-bottom: 3px;
-  font: bold 1rem SegoeUI;
+  font: bold 1rem Roboto;
   color: $title-text-color;
 }
 
@@ -96,7 +96,7 @@ $tooltip-text-color: #222;
 }
 
 .legend-tick {
-  font: normal 0.8rem SegoeUI;
+  font: normal 0.8rem Roboto;
   color: $title-text-color;
   // background-color: crimson;
   width: 30px;
@@ -128,7 +128,7 @@ $tooltip-text-color: #222;
   /* background-color: seagreen; */
   overflow: hidden;
   white-space: nowrap;
-  font: bold 1.2rem SegoeUI;
+  font: bold 1.2rem Roboto;
   color: $tooltip-text-color;
 }
 
@@ -138,7 +138,7 @@ $tooltip-text-color: #222;
   /* background-color: red; */
   // margin-top: 3px;
   overflow: hidden;
-  font: bold 0.9rem SegoeUI;
+  font: bold 0.9rem Roboto;
   color: $tooltip-text-color;
 }
 

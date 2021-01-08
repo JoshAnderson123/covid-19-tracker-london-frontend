@@ -11,13 +11,13 @@ $separator-line-color: #bbb;
 }
 
 .card-title {
-  font: bold 2rem SegoeUI;
+  font: bold 2rem Roboto;
   width: 100%;
   color: $title-text-color;
 }
 
 .card-title-small {
-  font: bold 1.5rem SegoeUI;
+  font: bold 1.5rem Roboto;
   width: 100%;
   color: $title-text-color;
 }
@@ -30,12 +30,12 @@ $separator-line-color: #bbb;
 }
 
 .stat-big {
-  font: bold 1.2rem SegoeUI;
+  font: bold 1.2rem Roboto;
   color: $stats-text-color;
 }
 
 .stat-small {
-  font: bold 1rem SegoeUI;
+  font: bold 1rem Roboto;
   color: $stats-text-color;
 }
 
@@ -57,11 +57,11 @@ $separator-line-color: #bbb;
   }
 
   .stat-big {
-    font: bold 1rem SegoeUI;
+    font: bold 1rem Roboto;
   }
   
   .stat-small {
-    font: bold 0.8rem SegoeUI;
+    font: bold 0.8rem Roboto;
   }
   
   #map-card {

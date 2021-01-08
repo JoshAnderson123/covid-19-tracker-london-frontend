@@ -1,16 +1,17 @@
 @import "variables";
+@import "App2";
 
-@font-face {
-  font-family: SegoeUI;
-  src: url('../media/fonts/segoeui.ttf');
-  font-weight: normal;
-}
+// @font-face {
+//   font-family: Roboto;
+//   src: url('../media/fonts/Roboto.ttf');
+//   font-weight: normal;
+// }
 
-@font-face {
-  font-family: SegoeUI;
-  src: url('../media/fonts/segoeuib.ttf');
-  font-weight: bold;
-}
+// @font-face {
+//   font-family: Roboto;
+//   src: url('../media/fonts/Robotob.ttf');
+//   font-weight: bold;
+// }
 
 $logo-size: 50%;
 
@@ -37,14 +38,14 @@ $logo-size: 50%;
 
 .sb-title {
   text-align: center;
-  font: bold 2.3rem SegoeUI;
+  font: bold 2.3rem Roboto;
   width: 10rem;
   margin-top: 2rem;
 }
 
 .sb-details {
   text-align: center;
-  font: normal 1rem SegoeUI;
+  font: normal 1rem Roboto;
   width: 10rem;
   margin-top: 2.5rem;
 }
@@ -65,7 +66,7 @@ $logo-size: 50%;
   }
 
   .sb-title {
-    font: bold 1.5rem SegoeUI;
+    font: bold 1.5rem Roboto;
     text-align: right;
     width: 15rem; 
     margin-top: 0;

@@ -45,6 +45,7 @@ function Charts({ caseDataArr, selectedArea }) {
     const ctxDeaths = document.getElementById('deaths-chart').getContext('2d');
     deathChart.current = new Chart(ctxDeaths, chartSettings(londonCaseData.labels, londonCaseData.deathData, londonCaseData.areaName, "Daily Deaths"));
 
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
