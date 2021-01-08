@@ -1,7 +1,7 @@
 import React from 'react'
 import StatBlock from './StatBlock'
 import MapLegend from './MapLegend'
-import { numberWithCommas } from '../../util'
+import { numberWithCommas } from '../util'
 
 export default function MapStats({ caseData, date, selectedArea }) {
 

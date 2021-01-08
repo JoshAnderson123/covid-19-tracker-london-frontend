@@ -1,8 +1,8 @@
 import React from 'react'
-import '../../css/LondonMap.css'
+import '../css/LondonMap.css'
 import chroma from 'chroma-js'
-import { pathData, cssName } from '../../config'
-import { casesPerHundredThousand } from '../../util'
+import { pathData, cssName } from '../config'
+import { casesPerHundredThousand } from '../util'
 import MapHighlight from './MapHighlight'
 import { pure } from 'recompose';
 

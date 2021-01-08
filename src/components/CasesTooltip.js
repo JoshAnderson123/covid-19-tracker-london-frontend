@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react'
-import { tooltipAreaOffset, cssName } from '../../config'
-import { trimArea, casesPerHundredThousand } from '../../util'
+import { tooltipAreaOffset, cssName } from '../config'
+import { trimArea, casesPerHundredThousand } from '../util'
 
 export default function CasesTooltip({ mousePos, cases, selectedArea }) {
 

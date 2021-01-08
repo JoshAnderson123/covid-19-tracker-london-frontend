@@ -3,10 +3,10 @@ import './css/App2.css'
 import axios from 'axios'
 import { caseDataArrToDict, handleKeyPress, formatDate } from './util'
 import { SERVER_URL } from './config'
-import SideBar from './components/new/SideBar'
-import MapCard from './components/new/MapCard'
-import InfoCard from './components/new/InfoCard'
-import Loading from './components/new/Loading'
+import SideBar from './components/SideBar'
+import MapCard from './components/MapCard'
+import InfoCard from './components/InfoCard'
+import Loading from './components/Loading'
 
 let caseData, caseDataArr
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import '../../css/LondonMap.css'
-import { pathData } from '../../config'
+import '../css/LondonMap.css'
+import { pathData } from '../config'
 
 export default function MapHighlight({ area }) {
 

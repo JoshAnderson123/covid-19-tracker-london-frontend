@@ -1,6 +1,7 @@
-import React, {useEffect, useRef} from 'react'
+import React, { useEffect, useRef } from 'react'
+import '../css/MapCard.css'
 import { pure } from 'recompose';
-import {formatDate} from '../../util'
+import { formatDate, formatReadableDate, formatReadableDateShort } from '../util'
 
 function DateSlider({ sliderData, date, updateDate, mousePress }) {
 
@@ -20,15 +21,18 @@ function DateSlider({ sliderData, date, updateDate, mousePress }) {
       const sliderThumbOffsetPercentage = (dateId / dateSpan) * 100
       return `calc(${sliderThumbOffsetPercentage}% - ${slideThumb.current.offsetWidth / 2}px)`
     } else {
-      return "0px"
+      return `calc(100% - 9px)`
     }
   }
 
-  function slideTest(e) {
+  function updateDateWithSlider(e, type) {
+
+    const xVal = type === "touch" ? e.touches[0].clientX : e.clientX
+
     if (!mousePress) return
     const rect = slider.current.getBoundingClientRect()
-    let selectedDateID = Math.round(((e.clientX - rect.left) / (slider.current.offsetWidth)) * sliderData.dateSpan)
-    if (selectedDateID > sliderData.dateSpan - 1) selectedDateID = sliderData.dateSpan - 1
+    let selectedDateID = Math.round(((xVal - rect.left) / (slider.current.offsetWidth)) * sliderData.dateSpan)
+    if (selectedDateID > sliderData.dateSpan) selectedDateID = sliderData.dateSpan
     if (selectedDateID < 0) selectedDateID = 0
     const selectedDate = new Date(sliderData.startDate)
     selectedDate.setDate(selectedDate.getDate() + selectedDateID)
@@ -36,10 +40,25 @@ function DateSlider({ sliderData, date, updateDate, mousePress }) {
   }
 
   return (
-    <div className="date-slider-container f-c" onMouseMove={e => slideTest(e)}>
+    <div className="date-slider-container f-c w-100"
+
+      onMouseMove={e => updateDateWithSlider(e, "mouse")}
+      onTouchMove={e => updateDateWithSlider(e, "touch")}
+    >
+
+      <div className="date-label ">{ window.innerWidth < 700 ? formatReadableDateShort(date) : formatReadableDate(date) }</div>
+
       <div className="date-slider">
         <div className="slide-thumb" style={{ left: calculateDateThumbOffset() }}></div>
       </div>
+
+      <div className="date-slider-forks"></div>
+
+      <div className="date-slider-label-wrapper flex-sb">
+        <div className="slider-fork-label">{formatReadableDate(sliderData.startDate)}</div>
+        <div className="slider-fork-label">{formatReadableDate(sliderData.endDate)}</div>
+      </div>
+
     </div>
   )
 }

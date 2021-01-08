@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import '../../css/Cards.css'
+import '../css/Cards.css'
 import DateSlider from './DateSlider'
 import LondonMap from './LondonMap'
 import MapStats from './MapStats'
 import CasesTooltip from './CasesTooltip'
-import {handleMouseMove2} from '../../util'
+import {handleMouseMove2} from '../util'
 
 export default function MapCard({ sliderData, date, updateDate, cases, selectedArea, setSelectedArea, caseData }) {
 

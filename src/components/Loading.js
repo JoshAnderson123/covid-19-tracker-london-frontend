@@ -1,5 +1,5 @@
 import React from 'react'
-import icon from "../../media/virus-icon.svg"
+import icon from "../media/virus-icon.svg"
 
 export default function Loading() {
   return (

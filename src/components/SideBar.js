@@ -1,6 +1,6 @@
 import React from 'react'
-import '../../css/SideBar.css'
-import icon from "../../media/virus-icon.svg"
+import '../css/SideBar.css'
+import icon from "../media/virus-icon.svg"
 import { Box, Image, AspectRatio } from "@chakra-ui/react"
 
 export default function SideBar() {

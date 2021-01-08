@@ -1,9 +1,9 @@
 import React from 'react'
-import '../../css/Cards.css'
-import '../../css/InfoCard.css'
+import '../css/Cards.css'
+import '../css/InfoCard.css'
 import StatBlock from './StatBlock'
 import Charts from './Charts'
-import { getBoroughSummaryData, numberWithCommas, formatReadableDateShort, formatReadableDateShorter, formatDate, trimArea } from '../../util'
+import { getBoroughSummaryData, numberWithCommas, formatReadableDateShort, formatReadableDateShorter, formatDate, trimArea } from '../util'
 
 export default function InfoCard({ caseDataArr, selectedArea, sliderData, caseData }) {
 
