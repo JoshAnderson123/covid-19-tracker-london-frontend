@@ -109,4 +109,41 @@ export const tooltipAreaOffset = {
   "Westminster": {x: 0, y: 0}
 }
 
+export const cssName = {
+  "Barking and Dagenham": "cssbad",
+  "Barking and Dagenham 2": "cssbad2",
+  "Barnet": "cssbar",
+  "Bexley": "cssbex",
+  "Brent": "cssbre",
+  "Bromley": "cssbro",
+  "Camden": "csscam",
+  "Croydon": "csscro",
+  "Ealing": "csseal",
+  "Enfield": "cssenf",
+  "Greenwich": "cssgre",
+  "Hackney and City of London": "csshcl",
+  "Hackney and City of London 2": "csshcl2",
+  "Hammersmith and Fulham": "csshaf",
+  "Haringey": "csshgy",
+  "Harrow": "csshrw",
+  "Havering": "csshav",
+  "Hillingdon": "csshil",
+  "Hounslow": "csshou",
+  "Islington": "cssisl",
+  "Kensington and Chelsea": "csskc",
+  "Kingston upon Thames": "csskut",
+  "Lambeth": "csslam",
+  "Lewisham": "csslew",
+  "Merton": "cssmer",
+  "Newham": "cssnew",
+  "Redbridge": "cssred",
+  "Richmond upon Thames": "cssrut",
+  "Southwark": "csssou",
+  "Sutton": "csssut",
+  "Tower Hamlets": "cssths",
+  "Waltham Forest": "csswaf",
+  "Wandsworth": "csswan",
+  "Westminster": "csswes"
+}
+
 export const caseTooltipOffset = { x: 20, y: 20 }

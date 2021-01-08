@@ -4,7 +4,7 @@ import { pathData } from '../../config'
 import MapHighlight from './MapHighlight'
 import { pure } from 'recompose';
 
-function LondonMap({ cases, selectedArea, setSelectedArea, strokeLondon, popup, setPopup }) {
+function LondonMap({ cases, selectedArea, setSelectedArea, popup, setPopup }) {
 
   // function logCases(areaName) {
   //   if (cases === []) return
@@ -41,10 +41,10 @@ function LondonMap({ cases, selectedArea, setSelectedArea, strokeLondon, popup, 
 
   return (
     <div className="map-wrapper f-c">
-      <div className="map-container" onClick={() => { if (strokeLondon) setPopup(true) }}>
+      <div className="map-container">
         <svg
           version="1.1"
-          className={`london-map fill-parent ${strokeLondon ? "stroke-london" : ""}`}
+          className="london-map fill-parent"
           xmlns="http://www.w3.org/2000/svg"
           x="0px" y="0px" viewBox="0 0 756 606.7"
         >

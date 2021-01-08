@@ -3,14 +3,13 @@ import Chart from 'chart.js'
 import { chartSettings, trimArea } from '../../util'
 import { pure } from 'recompose';
 
-function CasesChart({ caseDataArr, selectedArea, strokeLondon, setPopup }) {
+function CasesChart({ caseDataArr, selectedArea, setPopup }) {
 
   const [closing, setClosing] = useState(false)
   
   useEffect(() => {
 
-    // console.log("SelectedArea: ", selectedArea, ", StrokeLondon: ", strokeLondon)
-    const areaName = strokeLondon ? "London" : trimArea(selectedArea)
+    const areaName = !selectedArea ? "London" : trimArea(selectedArea)
     const sortedData = caseDataArr.sort((a, b) => a.date < b.date ? -1 : 1)
 
     const labels = sortedData.map(day => day.date)
@@ -44,7 +43,7 @@ function CasesChart({ caseDataArr, selectedArea, strokeLondon, setPopup }) {
   return (
     <div className={`popup-container fill-parent f-c ${closing ? "popup-closing" : "popup-opening"}`} onClick={() => closePopup()}>
       <div className="charts-container f-c">
-        <div className="popup-title">{(strokeLondon || !selectedArea) ? "London" : trimArea(selectedArea)}</div>
+        <div className="popup-title">{!selectedArea ? "London" : trimArea(selectedArea)}</div>
         <div className="chart-container">
           <canvas id="cases-chart"></canvas>
         </div>

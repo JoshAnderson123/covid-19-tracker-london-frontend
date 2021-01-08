@@ -42,7 +42,7 @@ export default function InfoCard({ caseDataArr, selectedArea, sliderData, caseDa
       </div>
       <div className="card-title-small">Timeline</div>
       <div className="separator-line"></div>
-      <Charts caseDataArr={caseDataArr} selectedArea={selectedArea} strokeLondon={false} />
+      <Charts caseDataArr={caseDataArr} selectedArea={selectedArea} />
     </div>
   )
 }

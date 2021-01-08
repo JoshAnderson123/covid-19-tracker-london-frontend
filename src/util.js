@@ -81,16 +81,16 @@ export function handleKeyPress(e, date, updateDate, sliderData) {
   updateDate(currentDate)
 }
 
-export function handleMouseMove(e, mousePos, setMousePos, setStrokeLondon, popup, selectedArea) {
-  setMousePos({ x: e.clientX, y: e.clientY })
-  const mapContainer = document.querySelector(".map-container")
-  const rect = mapContainer.getBoundingClientRect()
-  if (mousePos.x > rect.left && mousePos.x < rect.right && mousePos.y > rect.top && mousePos.y < rect.bottom && selectedArea === null) {
-    if (!popup) setStrokeLondon(true)
-  } else {
-    setStrokeLondon(false)
-  }
-}
+// export function handleMouseMove(e, mousePos, setMousePos, setStrokeLondon, popup, selectedArea) {
+//   setMousePos({ x: e.clientX, y: e.clientY })
+//   const mapContainer = document.querySelector(".map-container")
+//   const rect = mapContainer.getBoundingClientRect()
+//   if (mousePos.x > rect.left && mousePos.x < rect.right && mousePos.y > rect.top && mousePos.y < rect.bottom && selectedArea === null) {
+//     if (!popup) setStrokeLondon(true)
+//   } else {
+//     setStrokeLondon(false)
+//   }
+// }
 
 export function handleMouseMove2(e, setMousePos, type) {
   const x = type === "touch" ? e.touches[0].clientX : e.clientX
@@ -229,6 +229,6 @@ export function bp(arr) {
 }
 
 export function toCSS(areaName) {
-  const cssName = areaName.replace(" 2", "").replaceAll(" ", "-")
+  const cssName = areaName.replace(" 2", "").replaceAll(" ", "")
   return cssName
 }

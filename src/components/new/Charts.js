@@ -3,7 +3,7 @@ import Chart from 'chart.js'
 import { chartSettings, trimArea } from '../../util'
 import { pure } from 'recompose';
 
-function Charts({ caseDataArr, selectedArea, strokeLondon }) {
+function Charts({ caseDataArr, selectedArea }) {
 
   const caseChart = useRef()
   const deathChart = useRef()
@@ -36,12 +36,32 @@ function Charts({ caseDataArr, selectedArea, strokeLondon }) {
         }
       }
     });
+
+    const londonCaseData = getLondonCaseData()
+
+    const ctxCases = document.getElementById('cases-chart').getContext('2d');
+    caseChart.current = new Chart(ctxCases, chartSettings(londonCaseData.labels, londonCaseData.caseData, londonCaseData.areaName, "Daily Cases"));
+
+    const ctxDeaths = document.getElementById('deaths-chart').getContext('2d');
+    deathChart.current = new Chart(ctxDeaths, chartSettings(londonCaseData.labels, londonCaseData.deathData, londonCaseData.areaName, "Daily Deaths"));
+
   }, [])
 
   useEffect(() => {
 
-    if (!caseDataArr || !selectedArea) return
-    const areaName = strokeLondon ? "London" : trimArea(selectedArea)
+    if (!caseDataArr) return
+    const londonCaseData = getLondonCaseData()
+
+    caseChart.current.data.datasets[0].data = londonCaseData.caseData
+    caseChart.current.update()
+    deathChart.current.data.datasets[0].data = londonCaseData.deathData
+    deathChart.current.update()
+
+    // eslint-disable-next-line
+  }, [caseDataArr, selectedArea])
+
+  function getLondonCaseData() {
+    const areaName = !selectedArea ? "London" : trimArea(selectedArea)
     const sortedData = caseDataArr.sort((a, b) => a.date < b.date ? -1 : 1)
 
     const labels = sortedData.map(day => day.date)
@@ -52,22 +72,13 @@ function Charts({ caseDataArr, selectedArea, strokeLondon }) {
       sortedData.map(day => day.data.reduce((acc, area) => acc + area.deaths, 0)) :
       sortedData.map(day => day.data.filter(area => area.name === areaName)[0].deaths)
 
-    const londonCaseData = {
+    return {
       labels,
       caseData,
-      deathData
+      deathData,
+      areaName
     }
-
-    if (![null, undefined].includes(caseChart.current)) caseChart.current.destroy();
-    const ctxCases = document.getElementById('cases-chart').getContext('2d');
-    caseChart.current = new Chart(ctxCases, chartSettings(londonCaseData.labels, londonCaseData.caseData, areaName, "Daily Cases"));
-
-    if (![null, undefined].includes(deathChart.current)) deathChart.current.destroy();
-    const ctxDeaths = document.getElementById('deaths-chart').getContext('2d');
-    deathChart.current = new Chart(ctxDeaths, chartSettings(londonCaseData.labels, londonCaseData.deathData, areaName, "Daily Deaths"));
-
-    // eslint-disable-next-line
-  }, [caseDataArr, selectedArea])
+  }
 
   return (
     <div className="charts-container">

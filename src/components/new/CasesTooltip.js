@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react'
-import { tooltipAreaOffset } from '../../config'
-import { trimArea, casesPerHundredThousand, toCSS } from '../../util'
+import { tooltipAreaOffset, cssName } from '../../config'
+import { trimArea, casesPerHundredThousand } from '../../util'
 
 export default function CasesTooltip({ mousePos, cases, selectedArea }) {
 
@@ -8,7 +8,7 @@ export default function CasesTooltip({ mousePos, cases, selectedArea }) {
   const area = useRef()
 
   useEffect(() => {
-    const areaRect = document.querySelector(`.${toCSS(selectedArea)}`).getBoundingClientRect()
+    const areaRect = document.querySelector(`.${cssName[selectedArea]}`).getBoundingClientRect()
     const mapRect = document.querySelector("#map-card").getBoundingClientRect()
     area.current = {
       x: areaRect.x - mapRect.x + (tooltipAreaOffset[selectedArea].x * areaRect.width),
