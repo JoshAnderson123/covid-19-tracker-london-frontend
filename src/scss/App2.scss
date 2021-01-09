@@ -18,6 +18,7 @@
     url('../media/fonts/roboto-v20-latin-regular.woff2') format('woff2'),
     url('../media/fonts/roboto-v20-latin-regular.woff') format('woff');
   font-weight: normal;
+  font-display: fallback;
 }
 
 @font-face {
@@ -26,6 +27,7 @@
     url('../media/fonts/roboto-v20-latin-700.woff2') format('woff2'),
     url('../media/fonts/roboto-v20-latin-700.woff') format('woff');
   font-weight: bold;
+  font-display: fallback;
 }
 
 .page-container {

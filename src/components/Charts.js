@@ -10,17 +10,7 @@ function Charts({ caseDataArr, selectedArea }) {
 
   useEffect(() => {
     window.onresize = (e) => {
-
-      const casesChart = document.querySelector("#cases-chart")
-      const deathsChart = document.querySelector("#deaths-chart")
-      casesChart.style.width = `0px`
-      casesChart.style.height = `0px`
-      deathsChart.style.width = `0px`
-      deathsChart.style.height = `0px`
-      casesChart.width = 0
-      casesChart.height = 0
-      deathsChart.width = 0
-      deathsChart.height = 0
+      resizeCanvas()
     }
 
     Chart.pluginService.register({
@@ -51,12 +41,15 @@ function Charts({ caseDataArr, selectedArea }) {
   useEffect(() => {
 
     if (!caseDataArr) return
+
+    resizeCanvas()
     const londonCaseData = getLondonCaseData()
 
     caseChart.current.data.datasets[0].data = londonCaseData.caseData
     caseChart.current.update()
     deathChart.current.data.datasets[0].data = londonCaseData.deathData
     deathChart.current.update()
+
 
     // eslint-disable-next-line
   }, [caseDataArr, selectedArea])
@@ -81,13 +74,32 @@ function Charts({ caseDataArr, selectedArea }) {
     }
   }
 
+  function resizeCanvas() {
+    // const casesChart = document.querySelector("#cases-chart")
+      // casesChart.width = 300
+      // casesChart.height = 50
+      // casesChart.style.width = `100%`
+      // casesChart.style.height = `90%`
+      // const deathsChart = document.querySelector("#deaths-chart")
+      // deathsChart.width = 300
+      // deathsChart.height = 50
+      // deathsChart.style.width = `100%`
+      // deathsChart.style.height = `90%`
+  }
+
   return (
     <div className="charts-container">
-      <div className="chart-container" id="chart-container-cases">
-        <canvas id="cases-chart"></canvas>
+      <div className="chart-container f-c" id="chart-container-cases">
+        <div className="chart-wrapper">
+          <canvas id="cases-chart"></canvas>
+          {document.querySelector("#cases-chart") ? `${document.querySelector("#cases-chart").style.width}, ${document.querySelector("#cases-chart").width}` : "casesChart=null"}
+        </div>
       </div>
-      <div className="chart-container" id="chart-container-deaths">
-        <canvas id="deaths-chart"></canvas>
+      <div className="chart-container f-c" id="chart-container-deaths">
+        <div className="chart-wrapper">
+          <canvas id="deaths-chart"></canvas>
+          {document.querySelector("#deaths-chart") ? selectedArea ? selectedArea : "null" : "deathsChart=null"}
+        </div>
       </div>
     </div>
   )

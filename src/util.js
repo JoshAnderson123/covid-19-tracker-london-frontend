@@ -118,9 +118,9 @@ export function chartSettings(labels, data, areaName, title) {
       datasets: [{
         label: 'Cases',
         backgroundColor: 'rgba(252, 5, 5, 0.35)',
-        borderColor: 'rgba(252, 5, 5, 0.8)', // 210, 30, 60
+        borderColor: 'rgba(252, 5, 5, 0.8)',
         pointRadius: 0,
-        pointHitRadius: 5,
+        pointHitRadius: 5, // Changed from 5
         pointHoverRadius: 0,
         data: data
       }]
