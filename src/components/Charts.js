@@ -42,13 +42,10 @@ function Charts({ caseDataArr, selectedArea }) {
 
     if (!caseDataArr) return
 
-    resizeCanvas()
     const londonCaseData = getLondonCaseData()
-
     caseChart.current.data.datasets[0].data = londonCaseData.caseData
-    caseChart.current.update()
     deathChart.current.data.datasets[0].data = londonCaseData.deathData
-    deathChart.current.update()
+    resizeCanvas()
 
     // eslint-disable-next-line
   }, [caseDataArr, selectedArea])
@@ -76,17 +73,20 @@ function Charts({ caseDataArr, selectedArea }) {
   function resizeCanvas() {   
     
     function resizeC(canvasID, chartRef) {
-      const RATIO = 2
+      const RATIO = 1
       const chart = document.querySelector(canvasID)
       const rect = chart.getBoundingClientRect()
-      chart.width = rect.width * RATIO
-      chart.height = rect.height * RATIO
+      chart.width = Math.round(rect.width * RATIO)
+      chart.height = Math.round(rect.height * RATIO)
       chart.style.width = '100%'//`${chart.width}px`
       chart.style.height = '100%'//`${chart.height}px`
       chart.getContext("2d").setTransform(RATIO, 0, 0, RATIO, 0, 0);
+      // chart.style.width = `${chart.width-1}px`
+      // chart.style.height = `${chart.height-1}px`
       if(chartRef) {
         const ticksLim = rect.width < 400 ? Math.floor(rect.width/100) : Math.floor(rect.width/90)
         chartRef.current.options.scales.xAxes[0].ticks.maxTicksLimit = ticksLim
+        console.log(chart.width, rect.width)
         chartRef.current.update()
       }
     }

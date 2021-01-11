@@ -21,7 +21,6 @@ const theme = extendTheme({
   breakpoints
 })
 
-// console.log(theme)
 
 ReactDOM.render(
   <ChakraProvider theme={theme}>

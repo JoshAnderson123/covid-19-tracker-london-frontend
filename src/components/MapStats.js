@@ -7,7 +7,6 @@ export default function MapStats({ caseData, date, selectedArea }) {
 
   let data, cases, deaths
   if (caseData && selectedArea) {
-    console.log(selectedArea)
     data = caseData[date]
     if ( selectedArea === "London" ) {
       cases = data.reduce((acc, area) => acc + area.cases, 0)

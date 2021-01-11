@@ -8,7 +8,6 @@ const KEY_LEFT = 37,
 
 export function caseDataArrToDict(arr) {
   const dict = {}
-  // console.log(arr)
   for (let entry of arr) {
     const date = entry.date
     dict[date] = entry.data
@@ -126,7 +125,7 @@ export function chartSettings(labels, data, areaName, title) {
         pointHitRadius: 5, // Changed from 5
         pointHoverRadius: 0,
         data: data
-      }]
+      }]  
     },
     options: {
       responsive: true,

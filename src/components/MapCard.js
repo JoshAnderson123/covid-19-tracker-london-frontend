@@ -25,8 +25,8 @@ export default function MapCard({ sliderData, date, updateDate, cases, selectedA
       className="card-container flex-v-sb" id="map-card"
       //onMouseMove={e => handleMouseMove2(e, setMousePos, "mouse")}
       // onTouchMove={e => handleMouseMove2(e, setMousePos, "touch")}
-      onMouseDown={e => {console.log("mouse"); return setMousePress(true)}}
-      onTouchStart={e => {console.log("touch"); return setMousePress(true)}}
+      onMouseDown={e => setMousePress(true)}
+      onTouchStart={e => setMousePress(true)}
       onMouseUp={e => setMousePress(false)}
       onTouchEnd={e => setMousePress(false)}
     >
