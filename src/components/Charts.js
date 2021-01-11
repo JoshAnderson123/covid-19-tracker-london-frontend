@@ -75,20 +75,24 @@ function Charts({ caseDataArr, selectedArea }) {
 
   function resizeCanvas() {   
     
-    const casesChart = document.querySelector("#cases-chart")
-    const casesChartRect = casesChart.getBoundingClientRect()
-    casesChart.width = casesChartRect.width
-    casesChart.height = casesChartRect.height
-    casesChart.style.width = `100%`
-    casesChart.style.height = `100%`
-    if (caseChart.current) caseChart.current.update()
-    const deathsChart = document.querySelector("#deaths-chart")
-    const deathsChartRect = deathsChart.getBoundingClientRect()
-    deathsChart.width = deathsChartRect.width
-    deathsChart.height = deathsChartRect.height
-    deathsChart.style.width = `100%`
-    deathsChart.style.height = `100%`
-    if (deathChart.current) deathChart.current.update()
+    function resizeC(canvasID, chartRef) {
+      const RATIO = 2
+      const chart = document.querySelector(canvasID)
+      const rect = chart.getBoundingClientRect()
+      chart.width = rect.width * RATIO
+      chart.height = rect.height * RATIO
+      chart.style.width = '100%'//`${chart.width}px`
+      chart.style.height = '100%'//`${chart.height}px`
+      chart.getContext("2d").setTransform(RATIO, 0, 0, RATIO, 0, 0);
+      if(chartRef) {
+        const ticksLim = rect.width < 400 ? Math.floor(rect.width/100) : Math.floor(rect.width/90)
+        chartRef.current.options.scales.xAxes[0].ticks.maxTicksLimit = ticksLim
+        chartRef.current.update()
+      }
+    }
+
+    resizeC("#cases-chart", caseChart)
+    resizeC("#deaths-chart", deathChart)
   }
 
   return (

@@ -131,6 +131,7 @@ export function chartSettings(labels, data, areaName, title) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      devicePixelRatio: 1,
       scales: {
         yAxes: [{
           ticks: {
@@ -138,10 +139,10 @@ export function chartSettings(labels, data, areaName, title) {
           }
         }],
         xAxes: [{
-          type: 'time',
+          type: 'time', 
           ticks: {
             autoSkip: true,
-            maxTicksLimit: 5,
+            maxTicksLimit: 3,
             maxRotation: 0,
             minRotation: 0
           }
