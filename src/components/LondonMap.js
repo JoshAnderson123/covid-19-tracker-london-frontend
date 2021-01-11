@@ -6,7 +6,7 @@ import { casesPerHundredThousand } from '../util'
 import MapHighlight from './MapHighlight'
 import { pure } from 'recompose';
 
-function LondonMap({ cases, selectedArea, setSelectedArea }) {
+function LondonMap({ cases, selectedArea, setSelectedArea, hoverArea, setHoverArea}) {
 
   const mapContainerRect = document.querySelector(".map-container")
   const rect = mapContainerRect ? mapContainerRect.getBoundingClientRect() : { width: 100, height: 100 }
@@ -31,8 +31,8 @@ function LondonMap({ cases, selectedArea, setSelectedArea }) {
           fill={fillArea(fillStr)}
           onClick={() => setSelectedArea(fillStr)}
           onTouchStart={() => setSelectedArea(fillStr)}
-          onMouseEnter={() => setSelectedArea(key)}
-          onMouseLeave={() => setSelectedArea("London")}
+          onMouseEnter={() => setHoverArea(key)}
+          onMouseLeave={() => {setHoverArea(null)} }
           d={value}
         />
       )
@@ -44,7 +44,7 @@ function LondonMap({ cases, selectedArea, setSelectedArea }) {
 
   return (
     <div className="map-wrapper f-c">
-      <div className="map-container stretch">
+      <div className="map-container stretch" onClick={() => {if(hoverArea === null) setSelectedArea("London")}}>
         <svg
           version="1.1"
           className="london-map stretch"
@@ -55,7 +55,8 @@ function LondonMap({ cases, selectedArea, setSelectedArea }) {
         >
           {renderPaths()} 
         </svg>
-        <MapHighlight area={selectedArea} />
+        {selectedArea ? <MapHighlight area={selectedArea} type="selected" /> : null}
+        {(hoverArea && ["London", null].includes(selectedArea)) ? <MapHighlight area={hoverArea} type="hover" /> : null}
       </div>
     </div>
   )

@@ -1,7 +1,8 @@
 import { boroughPopulations } from './config'
 
 const KEY_LEFT = 37,
-  KEY_RIGHT = 39
+  KEY_RIGHT = 39,
+  KEY_ESC = 27
 
 // const DAY_MILLIS = 1000 * 60 * 60 * 24
 
@@ -67,18 +68,20 @@ export function formatReadableDateShorter(date) {
   return `${month} ${day}`
 }
 
-export function handleKeyPress(e, date, updateDate, sliderData) {
+export function handleKeyPress(e, date, updateDate, sliderData, setSelectedArea) {
 
-  if (![KEY_LEFT, KEY_RIGHT].includes(e.keyCode)) return
+  if (![KEY_LEFT, KEY_RIGHT, KEY_ESC].includes(e.keyCode)) return
 
   let currentDate = new Date(date)
 
-  if (e.keyCode === KEY_LEFT) {
-    if (currentDate > sliderData.startDate) currentDate.setDate(currentDate.getDate() - 1)
-  } else if (e.keyCode === KEY_RIGHT) {
-    if (currentDate < sliderData.endDate) currentDate.setDate(currentDate.getDate() + 1)
+  switch(e.keyCode) {
+    case KEY_LEFT: if (currentDate > sliderData.startDate) currentDate.setDate(currentDate.getDate() - 1); break;
+    case KEY_RIGHT: if (currentDate < sliderData.endDate) currentDate.setDate(currentDate.getDate() + 1); break;
+    case KEY_ESC: setSelectedArea("London"); break;
+    default: 
   }
-  updateDate(currentDate)
+
+  if ([KEY_LEFT, KEY_RIGHT].includes(e.keyCode)) updateDate(currentDate)
 }
 
 // export function handleMouseMove(e, mousePos, setMousePos, setStrokeLondon, popup, selectedArea) {
@@ -173,7 +176,7 @@ export function chartSettings(labels, data, areaName, title) {
 
 export function getBoroughSummaryData(areaNameUntrim, caseDataArr) {
 
-  const areaName = trimArea(areaNameUntrim)
+  const areaName = areaNameUntrim ? trimArea(areaNameUntrim) : "London"
 
   if (!caseDataArr || !areaName) return { population: "NaN", totalCases: "NaN", totalDeaths: "NaN" }
   let population, totalCases, totalDeaths

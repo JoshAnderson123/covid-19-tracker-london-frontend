@@ -2,8 +2,10 @@ $map-size: 100%;
 $map-blend-mode: normal;
 $map-stroke-color: #fff;
 $map-stroke-width: 0.5px;
-$map-highlight-stroke-color: rgba(0, 0, 0, 1);
-$map-highlight-stroke-width: 3px;
+$map-highlight-selected-stroke-color: rgba(0, 0, 0, 1);
+$map-highlight-selected-stroke-width: 3px;
+$map-highlight-hover-stroke-color: rgb(90, 90, 90);
+$map-highlight-hover-stroke-width: 3px;
 
 .map-wrapper {
   width: $map-size;
@@ -50,16 +52,24 @@ $map-highlight-stroke-width: 3px;
   stroke-width: $map-stroke-width;
 }
 
-.area-highlight {
+.area-highlight-selected, .area-highlight-hover {
   width: 100%;
   height: 100%;
   pointer-events: none;
 }
 
-.area-highlight path {
+.area-highlight-selected path, .area-highlight-hover path {
   fill: none;
-  stroke: $map-highlight-stroke-color;
-  stroke-width: $map-highlight-stroke-width;
+}
+
+.area-highlight-selected path {
+  stroke: $map-highlight-selected-stroke-color;
+  stroke-width: $map-highlight-selected-stroke-width;
+}
+
+.area-highlight-hover path {
+  stroke: $map-highlight-hover-stroke-color;
+  stroke-width: $map-highlight-hover-stroke-width;
 }
 
 // @media (max-width: 500px) {

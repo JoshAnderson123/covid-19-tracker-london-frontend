@@ -66,6 +66,12 @@ $tooltip-text-color: #222;
   flex-grow: 0;
 }
 
+.map-stats .stat-title {
+  color: $slider-fork-label-color;
+  font: normal 1rem Roboto;
+  margin-bottom: 5px;
+}
+
 .map-stats .left-container {
   width: 150px;
   // background-color: blueviolet;

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function MapLegend() {
   return (
-    <div className="map-legend flex-v-start">
+    <div className="map-legend f-c">
       <div className="legend-label">Daily Cases / 100k</div>
       <div className="legend-bar"></div>
       <div className="legend-tick-container flex-sb">

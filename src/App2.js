@@ -49,7 +49,7 @@ export default function App2() {
       <div
         className="content-container"
         tabIndex="0"
-        onKeyDown={e => handleKeyPress(e, date, updateDate, sliderData)}
+        onKeyDown={e => handleKeyPress(e, date, updateDate, sliderData, setSelectedArea)}
       >
         <MapCard
           sliderData={sliderData}

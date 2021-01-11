@@ -50,7 +50,6 @@ function Charts({ caseDataArr, selectedArea }) {
     deathChart.current.data.datasets[0].data = londonCaseData.deathData
     deathChart.current.update()
 
-
     // eslint-disable-next-line
   }, [caseDataArr, selectedArea])
 
@@ -74,17 +73,22 @@ function Charts({ caseDataArr, selectedArea }) {
     }
   }
 
-  function resizeCanvas() {
-    // const casesChart = document.querySelector("#cases-chart")
-      // casesChart.width = 300
-      // casesChart.height = 50
-      // casesChart.style.width = `100%`
-      // casesChart.style.height = `90%`
-      // const deathsChart = document.querySelector("#deaths-chart")
-      // deathsChart.width = 300
-      // deathsChart.height = 50
-      // deathsChart.style.width = `100%`
-      // deathsChart.style.height = `90%`
+  function resizeCanvas() {   
+    
+    const casesChart = document.querySelector("#cases-chart")
+    const casesChartRect = casesChart.getBoundingClientRect()
+    casesChart.width = casesChartRect.width
+    casesChart.height = casesChartRect.height
+    casesChart.style.width = `100%`
+    casesChart.style.height = `100%`
+    if (caseChart.current) caseChart.current.update()
+    const deathsChart = document.querySelector("#deaths-chart")
+    const deathsChartRect = deathsChart.getBoundingClientRect()
+    deathsChart.width = deathsChartRect.width
+    deathsChart.height = deathsChartRect.height
+    deathsChart.style.width = `100%`
+    deathsChart.style.height = `100%`
+    if (deathChart.current) deathChart.current.update()
   }
 
   return (
