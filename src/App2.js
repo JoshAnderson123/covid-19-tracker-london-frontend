@@ -18,7 +18,6 @@ export default function App2() {
   let [sliderData, setSliderData] = useState({})
   let [loading, setLoading] = useState(true)
 
-
   useEffect(() => {
     axios.get(`${SERVER_URL}/getCaseData`).then(res => {
       caseDataArr = res.data

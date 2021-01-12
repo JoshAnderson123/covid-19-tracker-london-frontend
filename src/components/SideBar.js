@@ -1,21 +1,20 @@
 import React from 'react'
 import '../css/SideBar.css'
 import icon from "../media/virus-icon.svg"
-import { Box, Image, AspectRatio } from "@chakra-ui/react"
 
 export default function SideBar() {
   return (
     <div className="sb-container f-vs">
-      <AspectRatio className="sb-logo" ratio={1} flexShrink="0">
-        <Image className="stretch" objectFit="contain" src={icon} alt="virus icon" />
-      </AspectRatio>
-      <Box className="sb-title">Covid-19 Tracker London</Box>
-      <Box className="sb-details">
-        <Box>Josh Anderson</Box>
-        <Box mt="10px">Sensing and IoT</Box>
-        <Box mt="10px">Design Engineering</Box>
-        <Box mt="10px">Imperial College London</Box>
-      </Box>
+      <div className="sb-logo">
+        <img src={icon} alt="virus icon" />
+      </div>
+      <div className="sb-title">COVID-19 Tracker London</div>
+      <div className="sb-details">
+        <div>Josh Anderson</div>
+        <div style={{marginTop: "10px"}}>Sensing and IoT</div>
+        <div style={{marginTop: "10px"}}>Design Engineering</div>
+        <div style={{marginTop: "10px"}}>Imperial College London</div>
+      </div>
     </div>
   )
 }
